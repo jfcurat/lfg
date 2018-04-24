@@ -2,6 +2,9 @@ const express = require('express');
 const sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 
+const  igdb = require('igdb-api-node').default;
+const client = igdb('bfa41c90d96ea032c2aa526da386d6bf');
+
 const gameRouter = require('./routes/gameRouter');
 // const postRouter = require('./routes/postRouter');
 const userRouter = require('./routes/userRouter');
@@ -14,7 +17,23 @@ const db = require('./models');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static('./client'));
+app.use(express.static('./client/build'));
+
+app.get('/api/game', async (req, res) => {
+  try {
+    const name = 'Call of Duty WW2';
+    const results = await client.games({
+      filters: {
+        'popularity-gt': '5',
+      },
+      fields: '*',
+      search: name,
+    })
+    res.json(results);
+  } catch(err) {
+    console.log(err);
+  } 
+})
 
 app.use(gameRouter, userRouter);
 

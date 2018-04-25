@@ -10,7 +10,7 @@ async function get(req, res) {
     }
   } else {
     try {
-      const games = await db.Games.findAll({});
+      const games = await db.Game.findAll({});
       res.status(200).json(games);
     } catch(err) {
       console.log(err);
@@ -19,9 +19,9 @@ async function get(req, res) {
 } 
 
 async function post(req, res) {
-  const { name, publisher, releaseDate, gameMode, rating, esrb } = req.body;
+  const { name, summary, genre, developer, publisher, releaseDate, gameMode, rating, esrb, coverPhoto } = req.body;
   try {
-    const game = await db.Games.create({ name, publisher, releaseDate, gameMode, rating, esrb });
+    const game = await db.Game.create({ name, developer, publisher, releaseDate, gameMode, rating, esrb, coverPhoto });
     res.status(200).send('Ok');
   } catch(err) {
     console.log(err);

@@ -1,41 +1,53 @@
-import React from 'react';
+import React, {Component} from 'react';
 import GameInfoModal from './GameInfoModal.jsx';
+import { Link } from "react-router-dom";
+import './Games.css';
 
-const Games = props => {
-  if(props.games.games.length === 0) {
-    return <p>Sorry we found no games matching that name! Please check the spelling and try again.</p>
-  } else {
-    const games = props.games.games;
-    const gameRows = [];
-    for(let i = 0; i < games.length / 5 + 1; i++) {
-      console.log(games);
-      gameRows.push(games.splice(0, 5));
+import API from '../../../utils/API.js';
+
+class Games extends Component {
+  addGame = async game => {
+    try {
+      await API.saveNewGame(game);
+      return
+    } catch(err) {
+      console.log(err);
     }
-    console.log(gameRows);
-      
-    return (
-      <div>
-        <p>{props.games.new ? "Would you like to add one of these?" : props.games.length === 1 ? 'We found this game:' : 'We found these games:'}</p>
-        <div className='container'>
-          {gameRows.map(row => {
-            return (
-              <div className='row'>
-                {row.map((game, index) => {
-                  return(
-                    <div key={index} className='col'>
-                      <img src={game.coverPhoto} alt=''></img>
-                      <p>{game.name}</p>
-                      <GameInfoModal gameInfo={game}/>
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    )
   }
-}
+
+  render() {
+    if(this.props.games.games) {
+      if(this.props.games.games.length === 0) {
+        return <p>Sorry we found no games matching that name! Please check the spelling and try again.</p>
+      } else {
+        const { games } = this.props.games;
+        return (
+          <div>
+            <p>{this.props.games.new ? "Would you like to add one of these?" : this.props.games.length === 1 ? 'We found this game:' : 'We found these games:'}</p>
+            <div className='flex-container'>
+              {games.map((game, index) => {
+                return(
+                  <div key={index}>
+                    <img src={game.coverPhoto} alt=''></img>
+                    <GameInfoModal gameInfo={game}/>
+                    <Link to={`/games/${game.name}`} onClick={this.addGame(this.game)}>
+                      <button className='btn btn-primary'>Add Game</button>
+                    </Link>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )
+      }
+    } else {
+      return (
+        <div>
+          <p>Search for a game!</p>
+        </div>
+      )
+    }
+  }
+};
 
 export default Games;

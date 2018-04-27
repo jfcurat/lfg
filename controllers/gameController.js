@@ -3,7 +3,7 @@ const db = require('../models');
 async function get(req, res) {
   if (req.body.name) {
     try {
-      const games = await db.Game.findAll({ name: req.body.name, include: [db.Post] });
+      const games = await db.Game.findAll({ name: req.body.name });
       res.status(200).json(games);
     } catch(err) {
       console.log(err);
@@ -28,7 +28,17 @@ async function post(req, res) {
   }
 }
 
+async function getOne(req, res) {
+  try {
+    const game = await db.Game.findOne({ name: req.body.name, include: [db.Post] });
+    res.status(200).json(game);
+  } catch(err) {
+    console.log(err);
+  }
+} 
+
 module.exports = {
   get,
   post,
+  getOne,
 }

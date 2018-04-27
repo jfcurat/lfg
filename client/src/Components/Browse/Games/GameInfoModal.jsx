@@ -1,48 +1,51 @@
 import React from 'react';
 import Modal from 'react-bootstrap4-modal';
+import './Games.css';
  
 class GameInfoModal extends React.Component {
   state = {
     showModal: false,
-    gameInfo: {},
   }
  
   modalBackdropClicked = () => {
     this.setState({showModal: false});
   }
 
-  componentDidMount() {
-    console.log(this.props);
-    this.setState({gameInfo: this.props.gameInfo});
-  }
-
   render() {
     return (
-      <div>
-    {console.log(this.props) }        
-      <button style={{float: 'left', marginRight: 5}} className='btn btn-primary' onClick={() => this.setState({showModal: true})}>More info!</button>
-      <Modal visible={this.state.showModal} onClickBackdrop={this.modalBackdropClicked}>
-        <div className="modal-header">
-          <h5 className="modal-title">Add a note!</h5>
-        </div>
-        <div className='container'>
-          <img src={this.props.gameInfo.coverPhoto} alt=''></img>
-          <p>{this.props.gameInfo.name}</p>
-          <ul>
-            {this.props.gameInfo.genre.map(genre => <li>{genre}</li>)}
-          </ul>
-          <ul>
-            {this.props.gameInfo.developer.map(developer => <a href={developer.url}><li>{developer.name}</li></a>)}
-          </ul>
-          <ul>
-            {this.props.gameInfo.publisher.map(publisher => <a href={publisher.url}><li>{publisher.name}</li></a>)}
-          </ul>
-          <ul>
-            {this.props.gameInfo.gameMode.map(gameMode => <li>{gameMode}</li>)}
-          </ul>
-          <p>Initial Realease: {this.props.gameInfo.releaseDate}</p>
-          <p>Ratings: {this.props.gameInfo.rating}</p>
-          <p>ESRB: {this.props.gameInfo.esrb}</p>        
+      <div>    
+      <button className='btn btn-primary' onClick={() => this.setState({showModal: true})}>More info!</button>
+      <Modal visible={this.state.showModal} dialogClassName='modal-lg' onClickBackdrop={this.modalBackdropClicked}>
+        <div>
+          <img src={this.props.gameInfo.coverPhoto} className='modal-img' alt=''></img>
+          <div className='container'>
+            <div className='row'>
+            <ul className='col'>
+              <p>Genres:</p>
+              {this.props.gameInfo.genre.map((genre, index) => <li key={index}>{genre}</li>)}
+            </ul>
+            <ul className='col'>Ratings: <li>{this.props.gameInfo.rating}</li></ul>
+            <ul className='col'>ESRB: <li>{this.props.gameInfo.esrb}</li></ul> 
+            </div>
+            <div className='row'>
+            <ul className='col'>
+              <p>Game Modes:</p>                            
+              {this.props.gameInfo.gameMode.map(gameMode => <li>{gameMode}</li>)}
+            </ul>
+            <ul className='col'>Initial Realease: <li>{this.props.gameInfo.releaseDate}</li></ul>
+            </div>
+            <div className='row'>
+            <ul className='col'>
+              <p>Developers:</p>              
+              {this.props.gameInfo.developer.map(developer => <li><a href={developer.url}>{developer.name}</a></li>)}
+            </ul>
+            <ul className='col'>
+              <p>Publishers:</p>              
+              {this.props.gameInfo.publisher.map(publisher => <li><a href={publisher.url}>{publisher.name}</a></li>)}
+            </ul>
+
+            </div>     
+          </div>  
         </div>
         <div className="modal-footer">
           <button type="button" className="btn btn-primary" onClick={this.modalBackdropClicked}>

@@ -1,27 +1,27 @@
 import React, {Component} from 'react';
-import Search from './Search.jsx';
-import Games from './Games/Games.jsx';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as gameActionCreators from '../../actions/gameActions.js';
-// import Nav from '../Nav/Nav.js';
 
-class Browse extends Component {
+class GamePage extends Component {
+  componentDidMount() {
+    const { match: { params } } = this.props;
+    const { gameActions } = this.props;
+    gameActions.retrieveGame(params.name);
+  }
+
   render() {
-    const { data } = this.props.games;
+    console.log(this.props);
     return (
-      <div className='container'>
-        <Search />
-        <Games games={data}/>
-      </div>
-    )  
+      <div>Made it</div>
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    games: state.games,
+    game: state.game,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -30,4 +30,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Browse);
+export default connect(mapStateToProps, mapDispatchToProps)(GamePage);

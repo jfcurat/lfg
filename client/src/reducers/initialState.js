@@ -1,3 +1,10 @@
 export default {
-  games: [],
+  games: {
+    data: [],
+    error: false,
+  },
+  game: {
+    game: '',
+    error: false,
+  }
 };

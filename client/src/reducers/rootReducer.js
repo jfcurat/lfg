@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import friends from './friendReducer';
-import movies from './movieReducer';
+import games from './gameReducer';
 
 const rootReducer = combineReducers({
-  friends,
-  movies,
+  games,
 });
 
 export default rootReducer;

@@ -8,6 +8,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    following: {
+      type: DataTypes.STRING,
+      get: function () {
+        return this.getDataValue('genre').split(';');
+      },
+      set: function (val) {
+        this.setDataValue('genre', val.join(';'));
+      }
+    }
   },
   {
     timestamps: false,

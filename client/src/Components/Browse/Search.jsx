@@ -1,13 +1,16 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as gameActionCreators from '../../actions/gameActions.js';
+
 class SearchForm extends React.Component {
   state = {
     gameName: '',
-  };
-
+  }
+  
   handleInputChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value,
     });
@@ -15,12 +18,9 @@ class SearchForm extends React.Component {
 
   handleFormSubmit = async event => {
     event.preventDefault();
-    const gameName = this.state.gameName;
-    this.props.setGames(gameName);
-
-    this.setState({
-      gameName: '',
-    })
+    const { gameActions } = this.props;
+    const { gameName } = this.state;
+    gameActions.retrieveGames(gameName);
   };
 
   render() {
@@ -44,4 +44,15 @@ class SearchForm extends React.Component {
   }
 };
 
-export default SearchForm;
+function mapStateToProps(state) {
+  return {
+    games: state.games,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    gameActions: bindActionCreators(gameActionCreators, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

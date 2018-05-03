@@ -1,32 +1,29 @@
-module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define('User', {
-    userName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    following: {
-      type: DataTypes.STRING,
-      get: function () {
-        return this.getDataValue('genre').split(';');
-      },
-      set: function (val) {
-        this.setDataValue('genre', val.join(';'));
-      }
-    }
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  userName: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: false,
-  })
+  email: {
+    type: String,
+    required: true,
+  },
+  following: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }],
+  followers: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }],
+  posts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
+  }],
+})
 
-  User.associate = function(models) {
-    User.hasMany(models.Post, {
-      onDelete: 'cascade',
-    });
-  };
+const User = mongoose.model('User', userSchema);
 
-  return User;
-}
+module.exports = User;

@@ -1,28 +1,25 @@
-module.exports = function(sequelize, DataTypes) {
-  const Post = sequelize.define('Post', {
-    post: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    amountOfPlayersNeeded: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: null,
-    },
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const postSchema = new Schema({
+  post: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: false,
-  })
+  amountOfPlayersNeeded: {
+    type: Number,
+    required: true,
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  game: {
+    type: Schema.Types.ObjectId,
+    ref: 'Game',
+  },
+})
 
-  
-  Post.associate = function(models) {
-    Post.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false,
-      }
-    });
+const Post = mongoose.model('Post', postSchema);
 
-  };
-
-  return Post;
-}
+module.exports = Post;

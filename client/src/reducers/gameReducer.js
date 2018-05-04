@@ -18,7 +18,7 @@ export default function gameReducer(state = initialState.games, action) {
     };
     case actionTypes.SET_GAME_SUCCESS: {
       return {
-        ...initialState.currentGame,
+        ...initialState.game,
         game: action.data,
         error: false,
       }

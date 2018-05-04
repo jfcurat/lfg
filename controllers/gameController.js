@@ -1,44 +1,59 @@
 const db = require('../models');
+const  igdb = require('igdb-api-node').default;
+const client = igdb('d8192b6f11e1ebe4cc13b10745509c60');
 
 async function get(req, res) {
-  if (req.body.name) {
-    try {
-      const games = await db.Game.findAll({ name: req.body.name });
-      res.status(200).json(games);
-    } catch(err) {
-      console.log(err);
+  try {
+    const games = await db.Game.find({ name: req.params.name });
+    if(games.length === 0) {
+      function precisionRound(number, precision) {
+        var factor = Math.pow(10, precision);
+        return Math.round(number * factor) / factor;
+      }
+      const results = await client.games({search: req.params.name, filters: {'popularity-gt': '5'}, fields: ['name', 'summary', 'genres', 'developers', 'publishers', 'release_dates', 'game_modes', 'rating', 'esrb', 'cover'], expand: ['developers', 'publishers', 'game_modes', 'genres']});
+      const newGames = results.body.map(game => {
+        return {
+          name: game.name,
+          summary: game.summary,
+          genre: game.genres.map(genre => genre.name),
+          developer: game.developers.map(developer => ({name: developer.name, url: developer.website})),
+          publisher: game.publishers.map(publisher => ({name: publisher.name, url: publisher.website})),
+          releaseDate: game.release_dates ? game.release_dates[0].human : null, 
+          gameMode: game.game_modes.map(gameMode => gameMode.name),         
+          rating: precisionRound(game.rating, 1),
+          esrb: game.esrb ? game.esrb.rating : null,
+          coverPhoto: `https://images.igdb.com/igdb/image/upload/t_720p/${game.cover.cloudinary_id}.jpg`,
+        }
+      });  
+      res.status(200).json({ new: true, games: newGames });
     }
-  } else {
-    try {
-      const games = await db.Game.findAll({});
-      res.status(200).json(games);
-    } catch(err) {
-      console.log(err);
-    }
+    res.status(200).json({ new: false, games});
+  } catch(err) {
+    console.log(err);
   }
 } 
 
-async function post(req, res) {
-  const { name, summary, genre, developer, publisher, releaseDate, gameMode, rating, esrb, coverPhoto } = req.body;
+async function getOne(req, res) {
   try {
-    const game = await db.Game.create({ name, developer, publisher, releaseDate, gameMode, rating, esrb, coverPhoto });
-    res.status(200).send('Ok');
+    const game = await db.Game.findOne({ _id: req.params.id }).populate('posts');
+    res.status(200).json(game);
   } catch(err) {
     console.log(err);
   }
 }
 
-async function getOne(req, res) {
+async function post(req, res) {
+  const { name, summary, genres, developers, publishers, releaseDate, gameModes, rating, esrb, coverPhoto } = req.body;
   try {
-    const game = await db.Game.findOne({ name: req.body.name, include: [db.Post] });
+    const game = await db.Game.create({ name, summary, genres, developers, publishers, releaseDate, gameModes, rating, esrb, coverPhoto });
     res.status(200).json(game);
   } catch(err) {
     console.log(err);
   }
-} 
+}
 
 module.exports = {
   get,
-  post,
   getOne,
+  post,
 }

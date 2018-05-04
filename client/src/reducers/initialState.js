@@ -4,7 +4,7 @@ export default {
     error: false,
   },
   game: {
-    game: '',
+    gameId: {},
     error: false,
   }
 };

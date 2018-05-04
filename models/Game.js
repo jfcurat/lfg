@@ -1,78 +1,54 @@
-module.exports = function(sequelize, DataTypes) {
-  const Game = sequelize.define('Game', {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    summary: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      get: function () {
-        return this.getDataValue('genre').split(';');
-      },
-      set: function (val) {
-        this.setDataValue('genre', val.join(';'));
-      }
-    },
-    developer: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      get: function () {
-        return this.getDataValue('developer').split(';');
-      },
-      set: function (val) {
-        this.setDataValue('developer', val.join(';'));
-      }
-    },
-    publisher: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      get: function () {
-        return this.getDataValue('publisher').split(';');
-      },
-      set: function (val) {
-        this.setDataValue('publisher', val.join(';'));
-      }
-    },
-    releaseDate: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    gameMode: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      get: function () {
-        return this.getDataValue('gameMode').split(';');
-      },
-      set: function (val) {
-        this.setDataValue('gameMode', val.join(';'));
-      }
-    },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    esrb: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: null,
-    },
-    coverPhoto: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    }
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const gameSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: false,
-  })
+  summary: {
+    type: String,
+    required: true,
+  },
+  genres: {
+    type: Array,
+    required: true,
+  },
+  developers: {
+    type: Array,
+    required: true,
+  },
+  publishers: {
+    type: Array,
+    required: true,
+  },
+  releaseDate: {
+    type: String,
+    required: true,
+  },
+  gameModes: {
+    type: Array,
+    required: true,
+  },
+  rating: {
+    type: Number,
+    required: true,
+  },
+  esrb: {
+    type: String,
+    required: true,
+    defaultValue: null,
+  },
+  coverPhoto: {
+    type: String,
+    required: true,
+  },
+  posts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
+  }],
+})
 
-  Game.associate = function(models) {
-    Game.hasMany(models.Post, {});
-  };
+const Game = mongoose.model('Game', gameSchema);
 
-  return Game;
-}
+module.exports = Game;

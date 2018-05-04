@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
-    "password": "abc123",
-    "database": "lfg",
+    "username": "james",
+    "password": "james666",
+    "database": "project3test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

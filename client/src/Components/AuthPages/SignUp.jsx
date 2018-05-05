@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import API from '../../utils/API';
 
 import { auth } from "../../firebase";
 
@@ -39,6 +40,8 @@ class SignUpForm extends Component {
     auth
       .doCreateUserWithEmailAndPassword(email, password1)
       .then(authUser => {
+        console.log(authUser);
+        API.saveNewUser({email: authUser.email, fireBaseId: authUser.uid, userName: this.state.username})
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.HOME);
       })
@@ -66,7 +69,7 @@ class SignUpForm extends Component {
             this.setState(byPropKey("username", event.target.value))
           }
           type="text"
-          placeholder="Your Name"
+          placeholder="Username"
         />
         <input
           value={email}

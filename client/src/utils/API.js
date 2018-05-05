@@ -21,7 +21,8 @@ export default {
 
   saveNewGame: async function(game) {
     try {
-      await axios.post('/api/games', game);
+      const newGame = await axios.post('/api/games', game);
+      return newGame;
     } catch(err) {
       return err;
     }
@@ -77,7 +78,16 @@ export default {
     } catch(err) {
       return err;
     }
-  }, 
+  },
+
+  updateUserInfo: async function(fireBaseId, platforms, userName) {
+    try {
+      const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName});
+      return updatedUser;
+    } catch(err) {
+      return err;
+    }
+  },
 
   addFollower: async function(userId, addFollowingId) {
     try {

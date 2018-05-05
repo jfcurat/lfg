@@ -10,6 +10,13 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  platforms: {
+    type: Array,
+  },
+  fireBaseId: {
+    type: String,
+    required: true,
+  },
   following: [{
     type: Schema.Types.ObjectId,
     ref: 'User',

@@ -5,7 +5,6 @@ import Games from './Games/Games.jsx';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as gameActionCreators from '../../actions/gameActions.js';
-// import Nav from '../Nav/Nav.js';
 
 class Browse extends Component {
   render() {
@@ -21,7 +20,7 @@ class Browse extends Component {
 
 function mapStateToProps(state) {
   return {
-    games: state.games,
+    games: state.games.games,
   };
 }
 function mapDispatchToProps(dispatch) {

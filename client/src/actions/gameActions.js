@@ -27,10 +27,11 @@ export const setGameFailure = () => {
   };
 };
 
-export const retrieveGame = gameName => {
+export const retrieveGame = gameId => {
   return async function(dispatch) {
     try {
-      const game = await API.findGame(gameName);
+      const game = await API.searchGameById(gameId);
+      console.log(game);
       dispatch(setGameSuccess(game));
     } catch(err) {
       console.log(err);
@@ -42,13 +43,8 @@ export const retrieveGame = gameName => {
 export const retrieveGames = gameName => {
   return async function(dispatch) {
     try {
-      const games = await API.searchSavedGames(gameName);
-      if (games.length < 1) {
-        const newGames = await API.searchNewGames(gameName);
-        dispatch(getGamesSuccess(newGames));
-      } else {
-        dispatch(getGamesSuccess(games));
-      }
+      const games = await API.searchGames(gameName);
+      dispatch(getGamesSuccess(games));
     } catch(err) {
       console.log(err);
       dispatch(getGamesFailure());

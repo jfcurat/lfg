@@ -3,8 +3,5 @@ export default {
     data: [],
     error: false,
   },
-  game: {
-    gameId: {},
-    error: false,
-  }
+  game: {},
 };

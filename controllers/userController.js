@@ -18,9 +18,9 @@ async function get(req, res) {
 }
 
 async function post(req, res) {
-  const { userName, email } = req.body;
+  const { userName, email, fireBaseId } = req.body;
   try {
-    const createUser = await db.User.create({ userName, email });
+    const createUser = await db.User.create({ userName, email, fireBaseId });
     res.status(200).json(createUser);
   } catch(err) {
     console.log(err);

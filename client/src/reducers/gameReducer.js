@@ -1,31 +1,36 @@
 import actionTypes from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function gameReducer(state = initialState.games, action) {
+export default function gameReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.GET_GAMES_SUCCESS: {
       return {
         ...state,
-        data: action.data,
-        error: false,
+        games: {
+          data: action.data,
+          error: false,
+        }
       };
     };
     case actionTypes.GET_GAMES_FAILURE: {
       return {
         ...state,
-        error: true,
+        games: {
+          error: true,
+        }
       };
     };
     case actionTypes.SET_GAME_SUCCESS: {
+      console.log(action.data);
       return {
-        ...initialState.game,
+        ...state,
         game: action.data,
         error: false,
       }
     }
     case actionTypes.SET_GAME_FAILURE: {
       return {
-        ...initialState.currentGame,
+        ...state,
         error: true,
       }
     };

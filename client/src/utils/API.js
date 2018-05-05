@@ -62,6 +62,15 @@ export default {
     }
   }, 
 
+  updateUserInfo: async function(fireBaseId, platforms, userName) {
+    try {
+      const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName});
+      return updatedUser;
+    } catch(err) {
+      return err;
+    }
+  },
+
   deleteUser: async function(id) {
     try {
       const saveUser = await axios.delete('/api/users/' + id);

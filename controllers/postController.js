@@ -10,7 +10,7 @@ async function get(req, res) {
 } 
 
 async function post(req, res) {
-  const { post, amountOfPlayersNeeded, author, game } = req.body;
+  const { post, amountOfPlayersNeeded, platform, userId, gameId } = req.body;
   try {
     const createPost = await db.Post.create({ post, amountOfPlayersNeeded, author, game });
     await db.User.findByIdAndUpdate(author, { $push: { posts: createPost._id } });

@@ -75,7 +75,7 @@ class App extends Component {
             />
 
             <Route exact path="/search" component={Browse} />
-            <Route exact path="/games/:name" component={GamePage} />
+            <Route exact path="/game/:id" component={GamePage} />
             <Route component={NoMatch} />
           </Switch>
         </div>

@@ -2,18 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-MyProfile = (props) =>{
+const MyProfile = (props) =>{
   return <li><Link to ="/myprofile">My Profile</Link></li>
 };
 
-Login = (props) => {
+const Login = (props) => {
   return <li><Link to="/login">Log-In/Create Account</Link></li>
 };
 
 // create log-in modal with firebase
 // need to figure out how to pass user log-in creation into mysql
 
-userOption = (props) => {
+const userOption = (props) => {
   const isLoggedIn = props.isLoggedIn;
   if (isLoggedIn) {
     return <MyProfile />;
@@ -82,10 +82,12 @@ const Navbar = props =>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active">
-          <a className="nav-link" href="/myfeed">My Feed <span class="sr-only">(current)</span></a>
+          {/* <a className="nav-link" href="/myfeed">My Feed <span class="sr-only">(current)</span></a> */}
+          <Link to ="/myfeed">My Feed</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/browse">Browse</a>
+          {/* <a className="nav-link" href="/browse">Browse</a> */}
+          <Link to="/browse">Browse</Link>
         </li>
       </ul>
       <ul className="navbar-nav ml-auto">

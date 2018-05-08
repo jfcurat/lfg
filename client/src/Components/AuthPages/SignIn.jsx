@@ -4,12 +4,22 @@ import { withRouter } from "react-router-dom";
 import { SignUpLink } from "./SignUp";
 import { auth } from "../../firebase";
 import * as routes from "../../routes/routes";
+import {Jumbotron, Container} from 'reactstrap'
 
 const SignInPage = ({ history }) => (
   <div>
-    <h1>SignIn</h1>
+  <Jumbotron fluid>
+  <div className="container">
+  <h1 class="display-3">sign in</h1>
+  <hr /> 
+  <p class="lead">or create an account to access the lfg-app.</p>
+  </div>
+  </Jumbotron>
+  <div className="container">
+    <h1>Sign In</h1>
     <SignInForm history={history} />
     <SignUpLink />
+    </div>
   </div>
 );
 

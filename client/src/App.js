@@ -19,7 +19,7 @@ import DashboardPage from "./Components/AuthPages/Dashboard";
 
 import MyProfile from "./Components/MyProfile/MyProfile";
 import Profile from "./Components/Profile/Profile";
-import Navbar from "./Components/Navbar/Navbar";
+import NavBar from "./Components/Navbar/Navbar";
 
 import * as routes from "./routes/routes";
 
@@ -42,13 +42,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar authUser={this.state.authUser} />
-          <hr />
-          {/* <Navigation authUser={this.state.authUser} /> */}
+          <NavBar authUser={this.state.authUser} />
 
-          <hr />
-
-          {/* <Nav /> */}
           <Switch>
             {/* <Route exact path='/' component={Browse} /> */}
 
@@ -87,6 +82,7 @@ class App extends Component {
             <Route component={NoMatch} />
           </Switch>
         </div>
+
       </Router>
     );
   }

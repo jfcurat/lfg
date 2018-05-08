@@ -6,13 +6,10 @@ body {
   color: #fff;
 }
 
-button, .btn, .btn-primary {
-  background-color: #79e;
-  border: none;
-}
 
-a {
+a, a:active, a:hover {
   color: #fff;
+  text-decoration: none;
 }
 
 .jumbotron {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./UpdateProfile.css";
+import "./UpdateProfileForm.css";
 import Checkbox from './Checkbox';
 
 const platformOptions = [
@@ -10,7 +10,7 @@ const platformOptions = [
   "Playstation 3"
 ];
 
-class UpdateProfile extends Component {
+class UpdateProfileForm extends Component {
   // Setting the component's initial state
   state = {
     username: "",
@@ -118,4 +118,4 @@ createCheckbox = label => (
   }
 }
 
-export default UpdateProfile;
+export default UpdateProfileForm;

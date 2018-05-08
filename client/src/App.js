@@ -76,8 +76,8 @@ class App extends Component {
 
             <Route exact path="/search" component={Browse} />
             <Route exact path="/games/:name" component={GamePage} />
-            <Route exact path="/myprofile" component={MyProfile} />
-            <Route exact path="/user/:id" component={Profile} />
+            {/* <Route exact path="/myprofile" component={MyProfile} />
+            <Route exact path="/user/:id" component={Profile} /> */}
             <Route exact path="/game/:id" component={GamePage} />
             <Route component={NoMatch} />
           </Switch>

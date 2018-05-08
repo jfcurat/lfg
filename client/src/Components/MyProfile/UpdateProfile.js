@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Form.css";
-import Checkbox from '../Checkbox';
+import "./UpdateProfile.css";
+import Checkbox from './Checkbox';
 
 const platformOptions = [
   "PC (Microsoft Windows)",
@@ -10,7 +10,7 @@ const platformOptions = [
   "Playstation 3"
 ];
 
-class Form extends Component {
+class UpdateProfile extends Component {
   // Setting the component's initial state
   state = {
     username: "",

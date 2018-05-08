@@ -3,6 +3,7 @@ import GameInfoModal from './GameInfoModal.jsx';
 import './Games.css';
 import GameImage from './GameImage';
 import AddGameButton from './AddGameButton';
+import PostModal from '../PostModal';
 
 import API from '../../../utils/API.js';
 
@@ -15,7 +16,6 @@ class Games extends Component {
         const { games } = this.props.games;
         return (
           <div>
-            {console.log(games)};
             <p>{this.props.games.new ? "Would you like to add one of these?" : this.props.games.length === 1 ? 'We found this game:' : 'We found these games:'}</p>
             <div className='flex-container'>
               {games.map((game, index) => {
@@ -25,6 +25,7 @@ class Games extends Component {
                     <GameImage src={game.coverPhoto} gameId={game._id ? game._id : false}/>
                     <GameInfoModal gameInfo={game}/>
                     <AddGameButton game={game} new={this.props.games.new}/>
+                    <PostModal />
                   </div>
                 )
               })}

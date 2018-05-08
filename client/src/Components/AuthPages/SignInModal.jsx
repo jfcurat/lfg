@@ -6,7 +6,7 @@ import { auth } from "../../firebase";
 import * as routes from "../../routes/routes";
 import { SignInForm } from "./SignIn";
 // import { SignUpLink } from "./SignUp";
-import SignUpModal from './SignUpModal';
+import SignUpModal from "./SignUpModal";
 
 class SignInModal extends React.Component {
   state = {
@@ -37,13 +37,17 @@ class SignInModal extends React.Component {
                 <br />
                 <br />
                 <li>
+                  <p>{`Enter your email & password to login: `}</p>
                   <SignInForm />
                 </li>
                 <br />
                 <br />
                 <li>
                   {/* <SignUpLink /> */}
-                  <SignUpModal />
+                  <p>
+                    {`Don't have an account yet? `}
+                    <SignUpModal />
+                  </p>
                 </li>
               </ul>
             </div>

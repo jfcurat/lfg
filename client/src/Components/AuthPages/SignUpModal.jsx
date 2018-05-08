@@ -35,6 +35,7 @@ class SignUpModal extends React.Component {
                 <br />
                 <br />
                 <li>
+                  <p>{`Enter your info below to sign up: `}</p>
                   <SignUpForm />
                 </li>
                 <br />

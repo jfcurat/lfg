@@ -17,8 +17,11 @@ a {
 
 .jumbotron {
   background-color: #343A40;
+<<<<<<< HEAD
 }
 
 a:active, a:hover {
   background-color: #79e;
+=======
+>>>>>>> master
 }

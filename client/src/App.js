@@ -17,6 +17,10 @@ import ForgotPasswordPage from "./Components/AuthPages/ForgotPW";
 import HomePage from "./Components/AuthPages/Home";
 import DashboardPage from "./Components/AuthPages/Dashboard";
 
+import MyProfile from "./Components/MyProfile/MyProfile";
+import Profile from "./Components/Profile/Profile";
+import Navbar from "./Components/Navbar/Navbar";
+
 import * as routes from "./routes/routes";
 
 class App extends Component {
@@ -38,8 +42,9 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Navbar authUser={this.state.authUser} />
           <hr />
-          <Navigation authUser={this.state.authUser} />
+          {/* <Navigation authUser={this.state.authUser} /> */}
 
           <hr />
 

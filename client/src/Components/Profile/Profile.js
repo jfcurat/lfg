@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 // import UpdateProfile from "./UpdateProfile"
-import Form from "../Form";
-import placeholder from "./placeholder.jpg";
+import UpdateProfile from "../MyProfile/UpdateProfile";
+import placeholder from "../MyProfile/placeholder.jpg";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import * as userActionCreators from '../../actions/userActions.js';
+import * as userActionCreators from '../../actions/userActions.js';
+import UpdateProfileButton from '../MyProfile/UpdateProfileButton';
 
 function mapStateToProps(state) {
     return {
@@ -38,6 +39,7 @@ const Profile = () =>
                         <div>If time permits, display user's registered gamertags</div>
                         {/* Playing On: [Platforms] */}
                         {/* Display Gamertags? */}
+                        {/* {UpdateProfileButton} */}
                     </div>
                     </div>
                 </div>
@@ -68,5 +70,4 @@ const Profile = () =>
 
   </div>;
 
-export default Profile
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

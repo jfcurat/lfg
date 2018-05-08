@@ -6,7 +6,8 @@ import placeholder from "./placeholder.jpg";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import * as userActionCreators from '../../actions/userActions.js';
+import * as userActionCreators from '../../actions/userActions.js';
+import UpdateProfileButton from './UpdateProfileButton';
 
 
 function mapStateToProps(state) {
@@ -25,7 +26,6 @@ const MyProfile = () =>
   <div>
       <h1>My Profile</h1>
       <h2>Keep your profile updated to get the most out of this app!</h2>
-    
       <div className="container">
         <div className="row">
             <div className="col-xs-12 col-md-6" margin-left = "10%" border="1px solid #ddd" background="#fff" padding-left= "3%">
@@ -42,7 +42,7 @@ const MyProfile = () =>
                         {/* Playing On: [Platforms] */}
                         {/* Display Gamertags? */}
                         {/* need button to link to update */}
-                        <a href="#" className="btn btn-primary btn-med active" role="button" aria-pressed="true">Update Profile</a>
+                        {/* {UpdateProfileButton} */}
                     </div>
                     </div>
                 </div>

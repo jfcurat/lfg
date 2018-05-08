@@ -16,15 +16,14 @@ class GamePage extends Component {
     if (!this.props.game) {
       return null;
     }
-    console.log(this.props);
     return (
-      <div class="jumbotron">
-        <h1 class="" style={{width: '75%', display: 'inline-block'}}>{this.props.game.name}</h1>
-        <span class="" style={{width: '75%', float: 'left'}}>{this.props.game.summary}</span>
+      <div className="jumbotron">
+        <h1 className="" style={{width: '75%', display: 'inline-block'}}>{this.props.game.name}</h1>
+        <span className="" style={{width: '75%', float: 'left'}}>{this.props.game.summary}</span>
         <img style={{height: '300px', width: 'auto'}} src={this.props.game.coverPhoto}></img>
-        <hr class="my-4"></hr>
+        <hr className="my-4"></hr>
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Create Post</a>
+        <a className="btn btn-primary btn-lg" href="#" role="button">Create Post</a>
       </div>
       //access to posts using this.props.game.posts
     )

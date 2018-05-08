@@ -17,6 +17,10 @@ import ForgotPasswordPage from "./Components/AuthPages/ForgotPW";
 import HomePage from "./Components/AuthPages/Home";
 import DashboardPage from "./Components/AuthPages/Dashboard";
 
+import Navbar from "./Components/Navbar";
+// import Profile from "./Components/Profile/Profile";
+// import MyProfile from "./Components/MyProfile"
+
 import * as routes from "./routes/routes";
 
 class App extends Component {
@@ -38,6 +42,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Navbar />
           <hr />
           <Navigation authUser={this.state.authUser} />
 
@@ -76,8 +81,8 @@ class App extends Component {
 
             <Route exact path="/search" component={Browse} />
             <Route exact path="/games/:name" component={GamePage} />
-            <Route exact path="/myprofile" component={MyProfile} />
-            <Route exact path="/user/:id" component={Profile} />
+            {/* <Route exact path="/myprofile" component={MyProfile} /> */}
+            {/* <Route exact path="/user/:id" component={Profile} /> */}
             <Route exact path="/game/:id" component={GamePage} />
             <Route component={NoMatch} />
           </Switch>

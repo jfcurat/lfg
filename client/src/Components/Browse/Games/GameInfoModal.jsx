@@ -33,7 +33,7 @@ class GameInfoModal extends React.Component {
               <p>Game Modes:</p>                            
               {this.props.gameInfo.gameModes.map(gameMode => <li>{gameMode}</li>)}
             </ul>
-            <ul className='col'>Initial Realease: <li>{this.props.gameInfo.releaseDate}</li></ul>
+            <ul className='col'>Initial Release: <li>{this.props.gameInfo.releaseDate}</li></ul>
             </div>
             <div className='row'>
             <ul className='col'>

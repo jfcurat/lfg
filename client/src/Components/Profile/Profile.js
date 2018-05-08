@@ -68,5 +68,4 @@ const Profile = () =>
 
   </div>;
 
-export default Profile
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

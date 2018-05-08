@@ -5,6 +5,7 @@ import * as routes from "../../routes/routes";
 
 import "./Navbar.css";
 import SignOutButton from "../AuthPages/SignOut";
+import SignInModal from "../AuthPages/SignInModal";
 
 // use authUser object for session handling later
 const Navigation = ({ authUser }) => (
@@ -34,7 +35,8 @@ const NavigationNoAuth = () => (
       <Link to={routes.LANDING}>Landing</Link>
     </li>
     <li>
-      <Link to={routes.SIGN_IN}>SignIn</Link>
+      {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
+      <SignInModal />
     </li>
   </ol>
 );

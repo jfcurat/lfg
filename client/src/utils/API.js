@@ -80,14 +80,14 @@ export default {
     }
   },
 
-  updateUserInfo: async function(fireBaseId, platforms, userName) {
-    try {
-      const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName});
-      return updatedUser;
-    } catch(err) {
-      return err;
-    }
-  },
+  // updateUserInfo: async function(fireBaseId, platforms, userName) {
+  //   try {
+  //     const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName});
+  //     return updatedUser;
+  //   } catch(err) {
+  //     return err;
+  //   }
+  // },
 
   addFollower: async function(userId, addFollowingId) {
     try {

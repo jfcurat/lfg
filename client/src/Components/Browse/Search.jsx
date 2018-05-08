@@ -2,7 +2,9 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import * as gameActionCreators from '../../actions/gameActions.js';
+import { Jumbotron, Container } from 'reactstrap';
 
 class SearchForm extends React.Component {
   state = {
@@ -25,9 +27,18 @@ class SearchForm extends React.Component {
 
   render() {
     return (
+      <div>
+      <Container fluid>
+      <div className="container">
+      <h1 className="display-3">
+      Search a game! </h1>
+      </div>
+      </Container>
+      <div>
+      <div className="container">
       <form className='searchForm'>
         <div className='form-group'>
-          <label htmlFor='gameNameInput'>Search</label>
+          {/* <label htmlFor='gameNameInput'>Search</label> */}
           <input
             id='gameNameInput'
             className='form-control'
@@ -35,11 +46,14 @@ class SearchForm extends React.Component {
             name='gameName'
             onChange={this.handleInputChange}
             type='text'
-            placeholder="Search"
+            placeholder="ex. Halo, NBA 2K18"
           />
         </div>
-        <button type='submit' className="btn btn-primary" onClick={this.handleFormSubmit}>Search</button>
+        <button type='submit' className="button btn float-right" onClick={this.handleFormSubmit}>Search</button>
       </form>
+      </div>
+      </div>
+  </div>
     )
   }
 };

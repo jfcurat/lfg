@@ -1,13 +1,16 @@
 import React from "react";
+import {Jumbotron, Container} from "reactstrap";
 
 const NoMatch = () => {
   return (
+  <Jumbotron fluid>
     <div className='container'>
       <div className='row'>
         <div className='col'>
-          <div className='jumbotron' style={{textAlign: 'center'}}>
-            <h1>404 Page Not Found</h1>
-            <h1>
+          <div className='container' style={{textAlign: 'center'}}>
+            <h1 className="display-3">404 Page Not Found</h1>
+            <hr />
+            <h1 className="display-1">
               <span role="img" aria-label="Face With Rolling Eyes Emoji">
                 🙄
               </span>
@@ -16,6 +19,7 @@ const NoMatch = () => {
         </div>
       </div>
     </div>
+  </Jumbotron>
   )
 }
 

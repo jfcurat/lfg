@@ -1,0 +1,21 @@
+.nav-item, .nav-link, .navbar-brand{
+    margin: 5px;
+    font-size: 11pt;
+    color: #fff;
+}
+
+.navbar{
+    height: 20px auto;
+    background-color: #222;
+    color: #fff;
+}
+
+button, .btn, .btn-primary {
+    background-color: #79e;
+    margin-top: 7px;
+    height: 30px;
+    font-size: 11pt;
+    border-radius: 3px;
+    color: #fff;
+    border: none;
+  }

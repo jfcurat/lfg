@@ -1,9 +1,16 @@
 import React from "react";
+import { Jumbotron, Button, Container } from "reactstrap";
 
-const LandingPage = () => (
+const LandingPage = () => {
+  return(
   <div>
-    <h1>Landing Page</h1>
+  <Jumbotron fluid>
+  <Container fluid>
+    <h1 className="display-3">Landing Page</h1>
+  </Container>
+  </Jumbotron>
   </div>
-);
+  );
+};
 
 export default LandingPage;

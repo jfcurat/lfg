@@ -31,13 +31,13 @@ class SearchForm extends React.Component {
       <Jumbotron fluid>
       <Container fluid>
       <div className="container">
-      <h1 className="display-3">
-      Search a game! </h1>
+      <h1 className="display-2 text-left">
+      browse games </h1>
       </div>
       </Container>
       <div className="container"> 
       <div className="row">
-      <form className='searchForm col-lg-10'>
+      <form className='searchForm col-lg-8'>
         
           <input
             id='gameNameInput'
@@ -48,9 +48,8 @@ class SearchForm extends React.Component {
             type='text'
             placeholder="ex. Halo, NBA 2K18"
           />
-              
           </form>
-          <button type='submit' onClick={this.handleFormSubmit}><i class="fas fa-search text-black"></i></button>
+          <button className="searchForm" type='submit' onClick={this.handleFormSubmit}><i class="fas fa-search text-black"></i></button>
 
       </div>
       </div>

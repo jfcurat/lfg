@@ -146,7 +146,7 @@ const NavigationAuth = () => (
     <ul className="navbar-nav ml-auto">
     {/* { userOption } */}
       <li className="nav-item">
-        <a className="nav-link" href="/myprofile">My Profile</a>
+        <Link to="/myprofile">My Profile</Link>
       </li>
       {/* CHANGE HERE */}
       <li>

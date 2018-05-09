@@ -159,31 +159,18 @@ const NavigationAuth = () => (
 
     </ul>
 
-    <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
-
+  
+      <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
+      
       <li className="button my-2 my-lg-0 pull-right">
-        <SignOutButton />
+
+      <SignOutButton />
+  
       </li>
     </ul>
 
   </Navbar>
 
-  // <ol>
-  //   <li>
-  //     <Link to={routes.LANDING}>Landing</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.HOME}>Home</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.DASHBOARD}>Dashboard</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={}>My Profile</Link>
-  //     <SignOutButton />
-  //   </li>
-  // </ol>
-);
 
 const NavigationNoAuth = () => (
   <Navbar className="navbar navbar-dark">

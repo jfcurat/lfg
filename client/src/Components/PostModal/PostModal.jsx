@@ -52,7 +52,7 @@ class AddModal extends React.Component {
       <div style={buttonStyle}> 
         <Button color="danger" onClick={this.toggle}>Add Game</Button>
         <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
-          <ModalHeader>new lfg</ModalHeader>
+          <ModalHeader>{this.props.game.name}</ModalHeader>
           <ModalBody>
             <Form style={{width: '90%', marginLeft: '5%', marginTop: '2%'}}>
               <FormGroup inline>

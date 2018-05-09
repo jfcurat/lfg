@@ -28,10 +28,10 @@ class SignInModal extends React.Component {
         </button>
         <Modal
           visible={this.state.showModal}
-          dialogClassName="modal-lg"
+          dialogClassName="modal-lg bg-dark"
           onClickBackdrop={this.modalBackdropClicked}
         >
-          <div className="container">
+          <div className="container bg-dark">
             <div className="row">
               <ul className="col">
                 <br />

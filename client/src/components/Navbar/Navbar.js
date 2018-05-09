@@ -103,60 +103,70 @@
 //   </div>
 // </nav>
 
-
 // export default Navbar;
 
 import React from "react";
 import { Link } from "react-router-dom";
+
+import {
+  Collapse,
+  NavbarToggler,
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 import "./Navbar.css";
 
 import * as routes from "../../routes/routes";
 
 import "./Navbar.css";
 
+import SignInModal from "../AuthPages/SignInModal";
 import SignOutButton from "../AuthPages/SignOut";
 
 // use authUser object for session handling later
-const Navbar = ({ authUser }) => (
+const NavBar = ({ authUser }) => (
   <div>{authUser ? <NavigationAuth /> : <NavigationNoAuth />}</div>
 );
 
 const NavigationAuth = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="/">LFG</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
+  <Navbar className="navbar navbar-dark">
 
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-        {/* <a className="nav-link" href="/myfeed">My Feed <span class="sr-only">(current)</span></a> */}
-        <Link to ="/myfeed">My Feed</Link>
-      </li>
-      <li className="nav-item">
-        {/* <a className="nav-link" href="/browse">Browse</a> */}
-        <Link to="/browse">Browse</Link>
-      </li>
-      <li className="nav-item">
-        {/* <a className="nav-link" href="/browse">Browse</a> */}
-        <Link to="/search">Search</Link>
-      </li>
+
+
+    <a className="navbar-brand" href="/">
+      lfg-app
+    </a>
+
+    <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
+        <li className="nav-item">
+            <Link to="/myfeed">feed</Link>
+          </li>
+
+        <li className="nav-item">
+          <Link to="/search">search</Link>
+        </li>
+
+        <li className="nav-item">
+          <Link to="/myprofile">profile</Link>
+        </li>
+
     </ul>
-    <ul className="navbar-nav ml-auto">
-    {/* { userOption } */}
-      <li className="nav-item">
-        <Link to="/myprofile">My Profile</Link>
-      </li>
-      {/* CHANGE HERE */}
-      <li>
+  
+      <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
+      
+      <li className="button my-2 my-lg-0 pull-right">
+
       <SignOutButton />
       </li>
-      {/* CHANGE HERE */}
       </ul>
-</div>
-</nav>
 
+  </Navbar>
 
   // <ol>
   //   <li>
@@ -176,32 +186,34 @@ const NavigationAuth = () => (
 );
 
 const NavigationNoAuth = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a className="navbar-brand" href="/">LFG</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
+  <Navbar className="navbar navbar-dark">
 
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-        {/* <a className="nav-link" href="/browse">Browse</a> */}
-        <Link to="/browse">Browse</Link>
-      </li>
-      <li className="nav-item">
-        {/* <a className="nav-link" href="/browse">Browse</a> */}
-        <Link to="/search">Search</Link>
-      </li>
-    </ul>
-    <ul className="navbar-nav ml-auto">
-    {/* CHANGE HERE */}
-    <li>
-      <Link to={routes.SIGN_IN}>SignIn</Link>
-    </li>
-    {/* CHANGE HERE */}
+
+
+    <a className="navbar-brand" href="/">
+      lfg-app
+    </a>
+
+    <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
+        <li className="nav-item">
+          {/* <a className="nav-link" href="/browse">Browse</a> */}
+          <Link to="/search">search</Link>
+
+        </li>
+
       </ul>
-</div>
-</nav>
+
+      <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
+      
+        <li className="button my-2 my-lg-0 pull-right">
+          {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
+          <SignInModal />
+        </li>
+        {/* CHANGE HERE */}
+      </ul>
+      </Navbar>
+
+
 
 
   // <ol>
@@ -214,4 +226,4 @@ const NavigationNoAuth = () => (
   // </ol>
 );
 
-export default Navbar;
+export default NavBar;

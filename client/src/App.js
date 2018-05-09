@@ -19,7 +19,7 @@ import DashboardPage from "./Components/AuthPages/Dashboard";
 
 import MyProfile from "./Components/MyProfile/MyProfile";
 import Profile from "./Components/Profile/Profile";
-import Navbar from "./Components/Navbar/Navbar";
+import NavBar from "./Components/Navbar/Navbar";
 
 import * as routes from "./routes/routes";
 
@@ -42,13 +42,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar authUser={this.state.authUser} />
-          <hr />
-          {/* <Navigation authUser={this.state.authUser} /> */}
+          <NavBar authUser={this.state.authUser} />
 
-          <hr />
-
-          {/* <Nav /> */}
           <Switch>
             {/* <Route exact path='/' component={Browse} /> */}
 
@@ -82,12 +77,12 @@ class App extends Component {
             <Route exact path="/search" component={Browse} />
             <Route exact path="/games/:name" component={GamePage} />
             <Route exact path="/myprofile" component={MyProfile} />
-            {/* <Route exact path="/myprofile" component={Profile} /> */}
             <Route exact path="/user/:id" component={Profile} />
             <Route exact path="/game/:id" component={GamePage} />
             <Route component={NoMatch} />
           </Switch>
         </div>
+
       </Router>
     );
   }

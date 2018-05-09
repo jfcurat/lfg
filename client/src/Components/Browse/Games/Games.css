@@ -4,8 +4,11 @@
 }
 
 .flex-container > div {
-  background-color: #f1f1f1;
+  background-color: #343A40;
+  border-radius: 5px;
+  color: #fff;
   width: 250px;
+  height: 300px auto;
   margin: 10px;
   text-align: center;
   line-height: 75px;
@@ -13,8 +16,12 @@
 }
 
 img {
-  margin-top: 20px;
-  width: 75%;
+  width: 100%;
+  overflow: auto;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-height: 300px;
+  min-height: 250px auto;
 }
 
 button {
@@ -23,10 +30,17 @@ button {
 
 .modal-img {
   width: 40%;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-radius: none;
 }
 
 ul > li {
   font-size: 22px;
   list-style-type: none;
   margin-top: -30px;
+}
+
+.modal-lg, {
+  background-color: #343A40;
 }

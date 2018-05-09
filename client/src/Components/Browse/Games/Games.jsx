@@ -15,7 +15,7 @@ class Games extends Component {
       } else {
         const { games } = this.props.games;
         return (
-          <div>
+          <div className="container">
             <p>{this.props.games.new ? "Would you like to add one of these?" : this.props.games.length === 1 ? 'We found this game:' : 'We found these games:'}</p>
             <div className='flex-container'>
               {games.map((game, index) => {
@@ -35,7 +35,7 @@ class Games extends Component {
       }
     } else {
       return (
-        <div>
+        <div className="container">
           <p>Search for a game!</p>
         </div>
       )

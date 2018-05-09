@@ -170,6 +170,7 @@ const NavigationAuth = () => (
     </ul>
 
   </Navbar>
+);
 
 
 const NavigationNoAuth = () => (
@@ -199,18 +200,6 @@ const NavigationNoAuth = () => (
       {/* CHANGE HERE */}
     </ul>
   </Navbar>
-
-
-
-
-  // <ol>
-  //   <li>
-  //     <Link to={routes.LANDING}>Landing</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.SIGN_IN}>SignIn</Link>
-  //   </li>
-  // </ol>
 );
 
 export default NavBar;

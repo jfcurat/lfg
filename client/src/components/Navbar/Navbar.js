@@ -157,10 +157,11 @@ const NavigationAuth = () => (
         </li>
 
     </ul>
-
+  
       <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
       
       <li className="button my-2 my-lg-0 pull-right">
+
       <SignOutButton />
       </li>
       </ul>

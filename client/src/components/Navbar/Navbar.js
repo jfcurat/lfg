@@ -108,6 +108,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import {
+  Collapse,
+  NavbarToggler,
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+import "./Navbar.css";
+
 import * as routes from "../../routes/routes";
 
 import "./Navbar.css";
@@ -116,7 +130,7 @@ import SignInModal from "../AuthPages/SignInModal";
 import SignOutButton from "../AuthPages/SignOut";
 
 // use authUser object for session handling later
-const Navbar = ({ authUser }) => (
+const NavBar = ({ authUser }) => (
   <div>{authUser ? <NavigationAuth /> : <NavigationNoAuth />}</div>
 );
 
@@ -234,4 +248,4 @@ const NavigationNoAuth = () => (
   // </ol>
 );
 
-export default Navbar;
+export default NavBar;

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import API from "../../utils/API";
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as userActionCreators from '../../actions/userActions.js';
+
 import { auth } from "../../firebase";
 
 import * as routes from "../../routes/routes";
@@ -39,18 +43,21 @@ class SignUpForm extends Component {
 
     auth
       .doCreateUserWithEmailAndPassword(email, password1)
-      .then(authUser => {
-        console.log(authUser);
-        API.saveNewUser({
-          email: authUser.email,
-          fireBaseId: authUser.uid,
-          userName: this.state.username
-        });
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
+      .then(async (authUser) => {
+        try {
+          console.log(authUser);
+          const user = await API.saveNewUser({email: authUser.email, fireBaseId: authUser.uid, userName: this.state.username});
+          console.log(user);
+          this.props.userActions.retrieveUser(authUser.uid);
+          console.log(this.props.user);
+        } catch(err) {
+          console.log(err);
+        }
+        // history.push(routes.HOME);
       })
       .catch(error => {
-        this.setState(byPropKey("error", error));
+        console.log(error);
+        // this.setState(byPropKey("error", error));
       });
 
     event.preventDefault();
@@ -116,6 +123,20 @@ const SignUpLink = () => (
   </p>
 );
 
-export default withRouter(SignUpPage);
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActionCreators, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+
+// export default withRouter(SignUpPage);
 
 export { SignUpForm, SignUpLink };

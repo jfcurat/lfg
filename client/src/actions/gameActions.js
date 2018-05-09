@@ -42,9 +42,8 @@ export const retrieveGame = gameId => {
 export const retrieveGames = gameName => {
   return async function(dispatch) {
     try {
-      console.log(gameName)
+      console.log(gameName);
       const games = await API.searchGames(gameName);
-      console.log(games);
       dispatch(getGamesSuccess(games));
     } catch(err) {
       console.log(err);

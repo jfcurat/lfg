@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 
 export default {
   searchGames: async function(name) {
@@ -12,6 +13,7 @@ export default {
 
   searchGameById: async function(id) {
     try {
+      console.log(id);
       const results = await axios.get('/api/game/' + id);
       return results.data;
     } catch(err) {
@@ -30,7 +32,8 @@ export default {
 
   newPost: async function(post) {
     try {
-      await axios.post('/api/post', {post})
+      const newPost = await axios.post('/api/post', { timeCreated: moment().format(), ...post });
+      console.log(newPost);
     } catch(err) {
       console.log(err);
     }
@@ -46,7 +49,19 @@ export default {
 
   getUser: async function(id) {
     try {
-      const user = axios.get('/api/users/' + id);
+      console.log(id);
+      const user = await axios.get('/api/users/' + id);
+      console.log(user);
+      return user;
+    } catch(err) {
+      return err;
+    }
+  },
+
+  signInUser: async function(fireBaseId) {
+    try {
+      const user = await axios.get('/api/user/' + fireBaseId);
+      console.log(user);
       return user;
     } catch(err) {
       return err;
@@ -79,15 +94,6 @@ export default {
       return err;
     }
   },
-
-  // updateUserInfo: async function(fireBaseId, platforms, userName) {
-  //   try {
-  //     const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName});
-  //     return updatedUser;
-  //   } catch(err) {
-  //     return err;
-  //   }
-  // },
 
   addFollower: async function(userId, addFollowingId) {
     try {

@@ -106,7 +106,7 @@ const NavigationNoAuth = () => (
       <ul className="navbar-nav ml-auto">
         <li>
           {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
-          <SignInModal />
+          <SignInModal button='sign in'/>
         </li>
       </ul>
     </div>

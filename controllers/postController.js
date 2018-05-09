@@ -10,12 +10,12 @@ async function get(req, res) {
 } 
 
 async function post(req, res) {
-  const { post, amountOfPlayersNeeded, platform, userId, gameId } = req.body;
+  const { post, amountOfPlayersNeeded, platform, userId, gameId, timeCreated } = req.body;
   try {
-    const createPost = await db.Post.create({ post, amountOfPlayersNeeded, author, game });
-    await db.User.findByIdAndUpdate(author, { $push: { posts: createPost._id } });
-    await db.Game.findByIdAndUpdate(game, { $push: { posts: createPost._id } });
-    
+    console.log(gameId)
+    const createPost = await db.Post.create({ post, amountOfPlayersNeeded, userId, gameId, platform, timeCreated });
+    await db.User.findByIdAndUpdate(userId, { $push: { posts: createPost._id } });
+    await db.Game.findByIdAndUpdate(gameId, { $push: { posts: createPost._id } });
     res.status(200).json(post);
   } catch(err) {
     console.log(err);

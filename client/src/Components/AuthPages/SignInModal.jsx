@@ -21,10 +21,10 @@ class SignInModal extends React.Component {
     return (
       <div>
         <button
-          className="btn btn-primary"
+          className="button"
           onClick={() => this.setState({ showModal: true })}
         >
-          Sign In
+          sign in
         </button>
         <Modal
           visible={this.state.showModal}

@@ -6,6 +6,7 @@ class AddModal extends React.Component {
     super(props);
     this.state = {
       showModal: false,
+
       gameId: this.props.id, 
       userId: this.props.user._id,
       post: '',
@@ -20,7 +21,6 @@ class AddModal extends React.Component {
     this.setState({
       showModal: false
     });
-
 
   saveNote = async () => {
     try {
@@ -47,6 +47,7 @@ class AddModal extends React.Component {
       paddingTop: "20px"
     };
     return (
+
       <div className="container">
       <div style={buttonStyle}> 
         <Button color="danger" onClick={this.toggle}>Add Game</Button>

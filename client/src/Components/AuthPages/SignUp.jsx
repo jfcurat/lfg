@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import API from '../../utils/API';
+import API from "../../utils/API";
 
 import { auth } from "../../firebase";
 
@@ -41,7 +41,11 @@ class SignUpForm extends Component {
       .doCreateUserWithEmailAndPassword(email, password1)
       .then(authUser => {
         console.log(authUser);
-        API.saveNewUser({email: authUser.email, fireBaseId: authUser.uid, userName: this.state.username})
+        API.saveNewUser({
+          email: authUser.email,
+          fireBaseId: authUser.uid,
+          userName: this.state.username
+        });
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push(routes.HOME);
       })
@@ -69,7 +73,7 @@ class SignUpForm extends Component {
             this.setState(byPropKey("username", event.target.value))
           }
           type="text"
-          placeholder="Username"
+          placeholder="Your name"
         />
         <input
           value={email}
@@ -77,7 +81,7 @@ class SignUpForm extends Component {
             this.setState(byPropKey("email", event.target.value))
           }
           type="email"
-          placeholder="Your Email Address"
+          placeholder="Your email address"
         />
         <input
           value={password1}
@@ -85,7 +89,7 @@ class SignUpForm extends Component {
             this.setState(byPropKey("password1", event.target.value))
           }
           type="password"
-          placeholder="Make a Password"
+          placeholder="Make a password"
         />
         <input
           value={password2}
@@ -93,7 +97,7 @@ class SignUpForm extends Component {
             this.setState(byPropKey("password2", event.target.value))
           }
           type="password"
-          placeholder="Confirm Your Password"
+          placeholder="Confirm your password"
         />
         <button type="submit" disabled={isInvalid}>
           Sign Up

@@ -6,9 +6,7 @@ import { withRouter } from 'react-router-dom';
 class AddGameButton extends Component {
   addGame = async () => {
     try {
-      console.log(this.props.game);
       const newGame = await API.saveNewGame(this.props.game);
-      console.log(newGame.data);
       this.props.history.push(`/game/${newGame.data._id}`)
     } catch(err) {
       console.log(err);
@@ -16,7 +14,6 @@ class AddGameButton extends Component {
   }
 
   render() {
-    console.log(this.props.new);
     if(this.props.new) {
       return (
         <button onClick={this.addGame} className='btn btn-primary'>Add Game</button>

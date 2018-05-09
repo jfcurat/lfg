@@ -1,5 +1,6 @@
 import actionTypes from './actionTypes';
 import API from '../utils/API.js';
+import { firebase } from '../firebase';
 
 export const getUserSuccess = data => {
   return {
@@ -14,16 +15,16 @@ export const getUserFailure = () => {
   };
 };
 
-export const retrieveUser = userId => {
+export const retrieveUser = fireBaseId => {
   return async function(dispatch) {
     try {
-      const user = await API.getUser(userId);
+      console.log(fireBaseId);
+      const user = await API.signInUser(fireBaseId);
       console.log(user);
-      dispatch(getUserSuccess(user));
+      dispatch(getUserSuccess(user.data));
     } catch(err) {
       console.log(err);
       dispatch(getUserFailure());
     }
   };
 };
-

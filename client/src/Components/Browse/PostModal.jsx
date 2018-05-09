@@ -1,14 +1,21 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
+import API from '../../utils/API';
+import SignInModal from '../AuthPages/SignInModal';
+import '../Navbar/Navbar.css';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as gameActionCreators from '../../actions/gameActions.js';
+import * as userActionCreators from '../../actions/userActions.js';
+import PostModal from '../Browse/PostModal';
 
 class AddModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showModal: false,
-      // gameId: this.props.id,
-      // userId: this.props.user._id,
       post: '',
       platform: '',
       amountOfPlayersNeeded: '',
@@ -22,12 +29,13 @@ class AddModal extends React.Component {
     });
   }
 
-  saveNote = async () => {
+  submitPost = async event => {
+    event.preventDefault();
     try {
-      await axios.post('/api/post'), {
-        post: this.props.post, playerNumber: this.state.note
-      };
-      this.setState({ showModal: false, note: '' });
+      console.log(this.state);
+      console.log(this.props);
+      await API.newPost({post: this.state.post, amountOfPlayersNeeded: this.state.amountOfPlayersNeeded, userId: this.props.userId ? this.props.userId : null, gameId: this.props.game.id, platform: this.state.platform});
+      this.setState({...this.state,  showModal: false, note: '' });
       // this.props.getSaved();
     } catch (err) {
       console.log(err);
@@ -47,43 +55,65 @@ class AddModal extends React.Component {
     var buttonStyle = {
       paddingTop: "20px"
     };
-    return (
-      <div>
-      <button className='btn btn-primary' onClick={()=> this.setState({ ...this.state, showModal: true})}>Create Post</button>
-      <div className="container">
-        <div style={buttonStyle}>
-          <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
-            <ModalHeader>new lfg</ModalHeader>
-            <ModalBody>
-              <Form style={{ width: '90%', marginLeft: '5%', marginTop: '2%' }}>
-                <FormGroup inline>
-                  <Label for="platformSelect">Choose a platform</Label>
-                  <Input type="select" name="select" id="platform" onChange={this.handleInputChange} inline>
-                    <option>All Platforms</option>
-                    <option>XBOX</option>
-                    <option>PS</option>
-                    <option>PC</option>
-                  </Input>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="playerNumber">Players needed</Label>
-                  <Input type="number" name="number" id="amountOfPlayersNeeded" placeholder="0" min="1" max="15" />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="messageText">Notes</Label>
-                  <Input type="textarea" name="text" id="post" placeholder="Lalalala..." />
-                </FormGroup>
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.saveNote}>Submit</Button>
-            </ModalFooter>
-          </Modal>
+    console.log(this.props.games);
+    if (this.props.userId) {
+      return (
+        <div>
+        <button className='btn btn-primary' onClick={()=> this.setState({showModal: true})}>Create Post</button>
+        <div className="container">
+          <div style={buttonStyle}>
+            <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
+              <ModalHeader>{this.props.games.name}</ModalHeader>
+              <ModalBody>
+                <Form style={{ width: '90%', marginLeft: '5%', marginTop: '2%' }}>
+                  <FormGroup inline>
+                    <Label for="platformSelect">Choose a platform</Label>
+                    <Input type="select" name="platform" id="platform" onChange={this.handleInputChange}>
+                      <option>All Platforms</option>
+                      <option>XBOX</option>
+                      <option>PS</option>
+                      <option>PC</option>
+                    </Input>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="playerNumber">Players needed</Label>
+                    <Input onChange={this.handleInputChange} type="number" name="amountOfPlayersNeeded" id="amountOfPlayersNeeded" placeholder="0" min="1" max="15" />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="messageText">Notes</Label>
+                    <Input onChange={this.handleInputChange} type="textarea" name="post" id="post" placeholder="Lalalala..." />
+                  </FormGroup>
+                </Form>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary" onClick={this.submitPost}>Submit</Button>
+              </ModalFooter>
+            </Modal>
+          </div>
         </div>
-      </div>
-      </div>
-    );
+        </div>
+      );
+    }
+    return <ul className="navbar-nav ml-auto">
+    <li>
+      {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
+      <SignInModal button='sign in'/>
+    </li>
+  </ul>
   }
 }
 
-export default AddModal;
+function mapStateToProps(state) {
+  return {
+    // game: state.games.game,
+    userId: state.user.user ? state.user.user._id : null,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    // gameActions: bindActionCreators(gameActionCreators, dispatch),
+    userActions: bindActionCreators(userActionCreators, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddModal);

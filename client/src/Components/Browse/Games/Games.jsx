@@ -19,13 +19,12 @@ class Games extends Component {
             <p>{this.props.games.new ? "Would you like to add one of these?" : this.props.games.length === 1 ? 'We found this game:' : 'We found these games:'}</p>
             <div className='flex-container'>
               {games.map((game, index) => {
-                console.log(game)
                 return(
                   <div key={index}>
                     <GameImage src={game.coverPhoto} gameId={game._id ? game._id : false}/>
                     <GameInfoModal gameInfo={game}/>
                     <AddGameButton game={game} new={this.props.games.new}/>
-                    <PostModal />
+                    <PostModal games={game}/>
                   </div>
                 )
               })}

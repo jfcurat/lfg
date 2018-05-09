@@ -119,7 +119,8 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from 'reactstrap';
 import "./Navbar.css";
 
 import * as routes from "../../routes/routes";
@@ -144,46 +145,32 @@ const NavigationAuth = () => (
     </a>
 
     <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
-        <li className="nav-item">
-            <Link to="/myfeed">feed</Link>
-          </li>
+      <li className="nav-item">
+        <Link to="/myfeed">feed</Link>
+      </li>
 
-        <li className="nav-item">
-          <Link to="/search">search</Link>
-        </li>
+      <li className="nav-item">
+        <Link to="/search">search</Link>
+      </li>
 
-        <li className="nav-item">
-          <Link to="/myprofile">profile</Link>
-        </li>
+      <li className="nav-item">
+        <Link to="/myprofile">profile</Link>
+      </li>
 
     </ul>
+
   
       <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
       
       <li className="button my-2 my-lg-0 pull-right">
 
       <SignOutButton />
+  
       </li>
-      </ul>
+    </ul>
 
   </Navbar>
 
-  // <ol>
-  //   <li>
-  //     <Link to={routes.LANDING}>Landing</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.HOME}>Home</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.DASHBOARD}>Dashboard</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={}>My Profile</Link>
-  //     <SignOutButton />
-  //   </li>
-  // </ol>
-);
 
 const NavigationNoAuth = () => (
   <Navbar className="navbar navbar-dark">
@@ -195,23 +182,23 @@ const NavigationNoAuth = () => (
     </a>
 
     <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
-        <li className="nav-item">
-          {/* <a className="nav-link" href="/browse">Browse</a> */}
-          <Link to="/search">search</Link>
+      <li className="nav-item">
+        {/* <a className="nav-link" href="/browse">Browse</a> */}
+        <Link to="/search">search</Link>
 
-        </li>
+      </li>
 
-      </ul>
+    </ul>
 
-      <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
-      
-        <li className="button my-2 my-lg-0 pull-right">
-          {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
-          <SignInModal />
-        </li>
-        {/* CHANGE HERE */}
-      </ul>
-      </Navbar>
+    <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
+
+      <li className="button my-2 my-lg-0 pull-right">
+        {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
+        <SignInModal button='sign in'/>
+      </li>
+      {/* CHANGE HERE */}
+    </ul>
+  </Navbar>
 
 
 

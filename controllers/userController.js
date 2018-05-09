@@ -8,7 +8,32 @@ async function get(req, res) {
       model: 'User',
       populate: {
         path: 'posts',
-        model: 'Post'
+        model: 'Post',
+        populate: {
+          path: 'game',
+          model: 'Game',
+        }
+      }
+    }).populate('posts');
+    res.status(200).json(user);
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+async function getSignIn(req, res) {
+  const { fireBaseId } = req.params;
+  try {
+    const user = await db.User.findOne({ fireBaseId }).populate({
+      path: 'following',
+      model: 'User',
+      populate: {
+        path: 'posts',
+        model: 'Post',
+        populate: {
+          path: 'game',
+          model: 'Game',
+        }
       }
     }).populate('posts');
     res.status(200).json(user);
@@ -53,6 +78,7 @@ async function patch(req, res) {
 module.exports = {
   get,
   post,
+  getSignIn,
   remove,
   patch,
 }

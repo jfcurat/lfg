@@ -1,6 +1,6 @@
 const db = require('../models');
 const  igdb = require('igdb-api-node').default;
-const client = igdb('d8192b6f11e1ebe4cc13b10745509c60');
+const client = igdb('738ddc47c2e3862f92c4fa70d8a112f9');
 
 async function get(req, res) {
   try {
@@ -35,7 +35,14 @@ async function get(req, res) {
 
 async function getOne(req, res) {
   try {
-    const game = await db.Game.findOne({ _id: req.params.id }).populate('posts');
+    const game = await db.Game.findOne({ _id: req.params.id }).populate({
+      path: 'posts',
+      model: 'Post',
+      populate: {
+        path: 'userId',
+        model: 'User',
+      }
+    });
     res.status(200).json(game);
   } catch(err) {
     console.log(err);

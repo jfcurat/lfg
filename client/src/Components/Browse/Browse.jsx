@@ -10,7 +10,7 @@ class Browse extends Component {
   render() {
     const { data } = this.props.games;
     return (
-      <div className='container'>
+      <div>
         <Search />
         <Games games={data}/>
       </div>

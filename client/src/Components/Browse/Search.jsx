@@ -27,7 +27,7 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <Jumbotron fluid>
       <Container fluid>
       <div className="container">
       <h1 className="display-3">
@@ -53,7 +53,7 @@ class SearchForm extends React.Component {
       </form>
       </div>
       </div>
-  </div>
+  </Jumbotron>
     )
   }
 };

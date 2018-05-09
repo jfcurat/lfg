@@ -19,7 +19,7 @@ class GameInfoModal extends React.Component {
         <div>
           {console.log(this.props.gameInfo)}
           <img src={this.props.gameInfo.coverPhoto} className='modal-img' alt=''></img>
-          <div className='container'>
+          <div className='container modal-lg'>
             <div className='row'>
             <ul className='col'>
               <p>Genres:</p>

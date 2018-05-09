@@ -21,7 +21,7 @@ class SignInModal extends React.Component {
     return (
       <div>
         <button
-          className="button"
+          className="nav-button"
           onClick={() => this.setState({ showModal: true })}
         >
           sign in

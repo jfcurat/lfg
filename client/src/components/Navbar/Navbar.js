@@ -139,14 +139,12 @@ const NavigationAuth = () => (
 
 
 
-    <a className="navbar-brand" href="/">
-      lfg-app
+    <a className="navbar-brand float-left" href="/">
+      <Link to="/myfeed">lfg-app</Link>
+
     </a>
 
-    <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
-        <li className="nav-item">
-            <Link to="/myfeed">feed</Link>
-          </li>
+    <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0 pull-left">
 
         <li className="nav-item">
           <Link to="/search">search</Link>
@@ -160,7 +158,7 @@ const NavigationAuth = () => (
 
       <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
       
-      <li className="button my-2 my-lg-0 pull-right">
+      <li className="nav-button my-2 my-lg-0 pull-right">
       <SignOutButton />
       </li>
       </ul>
@@ -204,7 +202,7 @@ const NavigationNoAuth = () => (
 
       <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
       
-        <li className="button my-2 my-lg-0 pull-right">
+        <li className="nav-button my-2 my-lg-0 pull-right">
           {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
           <SignInModal />
         </li>

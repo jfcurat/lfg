@@ -50,9 +50,10 @@ class AddModal extends React.Component {
     return (
       <div>
       <button className='btn btn-primary' onClick={()=> this.setState({ ...this.state, showModal: true})}>Create Post</button>
-      <div className="container">
+      <div className="container" style={{borderRadius:'5px'}}>
         <div style={buttonStyle}>
           <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
+          <div className="bg-dark">
             <ModalHeader>new lfg</ModalHeader>
             <ModalBody>
               <Form style={{ width: '90%', marginLeft: '5%', marginTop: '2%' }}>
@@ -78,6 +79,7 @@ class AddModal extends React.Component {
             <ModalFooter>
               <Button color="primary" onClick={this.saveNote}>Submit</Button>
             </ModalFooter>
+            </div>
           </Modal>
         </div>
       </div>

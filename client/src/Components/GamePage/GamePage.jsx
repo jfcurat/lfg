@@ -22,8 +22,6 @@ class GamePage extends Component {
         <span className="" style={{width: '75%', float: 'left'}}>{this.props.game.summary}</span>
         <img style={{height: '300px', width: 'auto'}} src={this.props.game.coverPhoto}></img>
         <hr className="my-4"></hr>
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a className="btn btn-primary btn-lg" href="#" role="button">Create Post</a>
       </div>
       //access to posts using this.props.game.posts
     )

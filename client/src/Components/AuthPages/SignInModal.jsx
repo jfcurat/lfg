@@ -28,7 +28,7 @@ class SignInModal extends React.Component {
         </button>
         <Modal
           visible={this.state.showModal}
-          dialogClassName="modal-lg bg-dark"
+          dialogClassName="modal-lg"
           onClickBackdrop={this.modalBackdropClicked}
         >
           <div className="container bg-dark">
@@ -37,7 +37,7 @@ class SignInModal extends React.Component {
                 <br />
                 <br />
                 <li>
-                  <p>{`Enter your email & password to login: `}</p>
+                  <p className="modal-header">{`Enter your email & password to login: `}</p>
                   <SignInForm />
                 </li>
                 <br />

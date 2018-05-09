@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 
 import { auth } from "../../firebase";
 import * as routes from "../../routes/routes";
-import { SignInForm } from "./SignIn";
+import SignInForm from "./SignIn";
 // import { SignUpLink } from "./SignUp";
 import SignUpModal from "./SignUpModal";
 
@@ -21,11 +21,13 @@ class SignInModal extends React.Component {
     return (
       <div>
         <button
+<<<<<<< HEAD
           className="nav-button"
+=======
+          className="button btn btn-primary"
+>>>>>>> master
           onClick={() => this.setState({ showModal: true })}
-        >
-          sign in
-        </button>
+        >{this.props.button.trim()}</button>
         <Modal
           visible={this.state.showModal}
           dialogClassName="modal-lg"

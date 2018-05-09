@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as userActionCreators from '../../actions/userActions.js';
 import { SignUpLink } from "./SignUp";
 import { auth } from "../../firebase";
 import * as routes from "../../routes/routes";
@@ -23,35 +26,32 @@ const SignInPage = ({ history }) => (
   </div>
 );
 
-const byPropKey = (propName, val) => () => ({
+const byPropKey = (propName, val) => ({
   [propName]: val
 });
 
-const INITIAL_STATE = {
-  email: "",
-  password: "",
-  error: null
-};
-
 class SignInForm extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = { ...INITIAL_STATE };
+  //   this.state = { ...INITIAL_STATE };
+  // }
+  state = {
+    email: '',
+    password: '',
+    error: null,
   }
-
+ 
   onSubmit = event => {
     const { email, password } = this.state;
 
     const { history } = this.props;
-
     auth
       .doSignInWithEmailAndPassword(email, password)
-      .then(user => {
-        console.log(user.uid);
-
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
+      .then(async (user) => {
+        console.log(user);
+        await this.props.userActions.retrieveUser(user.uid);
+        history.push('/search');
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -83,7 +83,11 @@ class SignInForm extends Component {
           type="password"
           placeholder="Password"
         />
+<<<<<<< HEAD
         <button type="btn-primary submit" disabled={isInvalid}>
+=======
+        <button type="submit" onClick={this.onSubmit} disabled={isInvalid}>
+>>>>>>> master
           Sign In
         </button>
 
@@ -93,6 +97,19 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(SignInPage);
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActionCreators, dispatch),
+  };
+}
 
-export { SignInForm };
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignInForm));
+
+// export default withRouter(SignInPage);
+
+// export { SignInForm };

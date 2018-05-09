@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./UpdateProfile.css";
 import Checkbox from './Checkbox';
+import API from '../../utils/API.js';
+
 
 const platformOptions = [
   "PC (Microsoft Windows)",
@@ -10,7 +12,7 @@ const platformOptions = [
   "Playstation 3"
 ];
 
-class UpdateProfile extends Component {
+class UpdateProfileForm extends Component {
   // Setting the component's initial state
   state = {
     username: "",
@@ -66,6 +68,11 @@ createCheckbox = label => (
 
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
+    const updatedUser = API.updateUserInfo(
+      this.state.user.fireBaseId, 
+      this.state.user.platforms, 
+      this.state.user.userName
+    );
     event.preventDefault();
     if (!this.state.username) {
     // if (!this.state.username || this.state.username === ???)   
@@ -75,7 +82,14 @@ createCheckbox = label => (
         `Please select at least one platform you play on ${this.state.username}!`
       );
     } else {
-      alert(`Hello ${this.state.username}`);
+      console.log(this.state.user);
+      const updatedUser = API.updateUserInfo(
+        this.state.user.fireBaseId, 
+        this.state.user.platforms, 
+        this.state.user.userName
+      );
+      console.log(updatedUser.data);
+      this.props.history.push(`/user/${updatedUser.data._id}`);
     }
 
     this.setState({
@@ -87,9 +101,8 @@ createCheckbox = label => (
   };
 
   render() {
-    // Notice how each input has a `value`, `name`, and `onChange` prop
-    // Timezone: ?
-    // Games You Play: y incorporate with igdb
+    // Games You Play: incorporate with igdb
+    console.log(this.state)
     return (
       <div>
         <p>
@@ -118,4 +131,4 @@ createCheckbox = label => (
   }
 }
 
-export default UpdateProfile;
+export default UpdateProfileForm;

@@ -10,14 +10,22 @@ const postSchema = new Schema({
     type: Number,
     required: true,
   },
-  author: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
-  game: {
+  gameId: {
     type: Schema.Types.ObjectId,
     ref: 'Game',
   },
+  timeCreated: {
+    type: String,
+    required: true,
+  },
+  platform: {
+    type: String,
+    required: true,
+  }
 })
 
 const Post = mongoose.model('Post', postSchema);

@@ -35,7 +35,14 @@ async function get(req, res) {
 
 async function getOne(req, res) {
   try {
-    const game = await db.Game.findOne({ _id: req.params.id }).populate('posts');
+    const game = await db.Game.findOne({ _id: req.params.id }).populate({
+      path: 'posts',
+      model: 'Post',
+      populate: {
+        path: 'userId',
+        model: 'User',
+      }
+    });
     res.status(200).json(game);
   } catch(err) {
     console.log(err);

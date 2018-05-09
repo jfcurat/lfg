@@ -11,7 +11,7 @@ import "./App.css";
 
 import Navigation from "./Components/Navbar/Navigation";
 import LandingPage from "./Components/AuthPages/Landing";
-import SignUpPage from "./Components/AuthPages/SignUp";
+import SignUpForm from "./Components/AuthPages/SignUp";
 import SignInPage from "./Components/AuthPages/SignIn";
 import ForgotPasswordPage from "./Components/AuthPages/ForgotPW";
 import HomePage from "./Components/AuthPages/Home";
@@ -55,7 +55,7 @@ class App extends Component {
             <Route
               exact
               path={routes.SIGN_UP}
-              component={() => <SignUpPage />}
+              component={() => <SignUpForm />}
             />
             <Route
               exact
@@ -76,9 +76,8 @@ class App extends Component {
 
             <Route exact path="/search" component={Browse} />
             <Route exact path="/games/:name" component={GamePage} />
-            {/* <Route exact path="/myprofile" component={MyProfile} /> */}
-            {/* <Route exact path="/user/:id" component={Profile} /> */}
-
+            <Route exact path="/myprofile" component={MyProfile} />
+            <Route exact path="/user/:id" component={Profile} />
             <Route exact path="/game/:id" component={GamePage} />
             <Route component={NoMatch} />
           </Switch>

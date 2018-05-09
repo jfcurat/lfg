@@ -20,7 +20,7 @@ class Browse extends Component {
 
 function mapStateToProps(state) {
   return {
-    games: state.games.games,
+    games: state.games, 
   };
 }
 function mapDispatchToProps(dispatch) {

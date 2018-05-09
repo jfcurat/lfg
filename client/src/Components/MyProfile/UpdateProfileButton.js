@@ -14,13 +14,13 @@
 //   }
 
 //   render() {
-//     if() {
-//       return (
+//     // if(this.state.user) {
+//     //   return (
 //         <button onClick={this.} className="btn btn-primary btn-med">Update Profile</button>
-//       )
-//     } else {
-//       return null;
-//     }
+//     //   )
+//     // } else {
+//     //   return null;
+//     // }
 //   }
 // }
 

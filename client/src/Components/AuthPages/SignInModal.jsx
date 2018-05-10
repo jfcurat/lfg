@@ -1,55 +1,38 @@
 import React from "react";
-import Modal from "react-bootstrap4-modal";
-import { withRouter } from "react-router-dom";
-
-import { auth } from "../../firebase";
-import * as routes from "../../routes/routes";
+import {Modal, ModalBody} from "reactstrap";
 import SignInForm from "./SignIn";
-// import { SignUpLink } from "./SignUp";
 import SignUpModal from "./SignUpModal";
 
 class SignInModal extends React.Component {
-  state = {
-    showModal: false
-  };
-
-  modalBackdropClicked = () => {
-    this.setState({ showModal: false });
-  };
-
   render() {
     return (
       <div>
         <button
-<<<<<<< HEAD
-          className="nav-button"
-=======
           className="button btn btn-primary"
->>>>>>> master
-          onClick={() => this.setState({ showModal: true })}
+          onClick={this.props.toggleSignIn}
         >{this.props.button.trim()}</button>
         <Modal
-          visible={this.state.showModal}
-          dialogClassName="modal-lg"
-          onClickBackdrop={this.modalBackdropClicked}
+          isOpen={this.props.signIn}
+          toggle={this.props.toggleSignIn}
         >
+          <ModalBody>
           <div className="container bg-dark">
             <div className="row">
               <ul className="col">
                 <br />
                 <br />
                 <li>
-                  <p className="modal-header">{`Enter your email & password to login: `}</p>
+                  <p>{`Enter your email & password to login: `}</p>
                   <SignInForm />
                 </li>
                 <br />
                 <br />
                 <li>
                   {/* <SignUpLink /> */}
-                  <p>
-                    {`Don't have an account yet? `}
-                    <SignUpModal />
-                  </p>
+                  <div>
+                    <p>{`Don't have an account yet? `}</p>
+                    <SignUpModal toggle={this.props.toggleSignUp} signUpModal={this.props.signUp}/>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -57,12 +40,13 @@ class SignInModal extends React.Component {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={this.modalBackdropClicked}
+                onClick={this.props.toggleSignIn}
               >
                 Close
               </button>
             </div>
           </div>
+          </ModalBody>
         </Modal>
       </div>
     );

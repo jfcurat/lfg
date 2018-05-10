@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
 import API from "../../utils/API";
+import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -8,14 +8,13 @@ import * as userActionCreators from '../../actions/userActions.js';
 
 import { auth } from "../../firebase";
 
-import * as routes from "../../routes/routes";
 
-const SignUpPage = ({ history }) => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm history={history} />
-  </div>
-);
+// const SignUpPage = ({ history }) => (
+//   <div>
+//     <h1>SignUp</h1>
+//     <SignUpForm history={history} />
+//   </div>
+// );
 
 const INITIAL_STATE = {
   username: "",
@@ -46,14 +45,14 @@ class SignUpForm extends Component {
       .then(async (authUser) => {
         try {
           console.log(authUser);
-          const user = await API.saveNewUser({email: authUser.email, fireBaseId: authUser.uid, userName: this.state.username});
+          const user = await API.saveNewUser({email: authUser.email, fireBaseId: authUser.uid, userName: username});
           console.log(user);
           this.props.userActions.retrieveUser(authUser.uid);
           console.log(this.props.user);
         } catch(err) {
           console.log(err);
         }
-        // history.push(routes.HOME);
+        history.push('/myprofile');
       })
       .catch(error => {
         console.log(error);
@@ -73,6 +72,7 @@ class SignUpForm extends Component {
       username === "";
 
     return (
+      <div>
       <form onSubmit={this.onSubmit}>
         <input
           value={username}
@@ -110,18 +110,14 @@ class SignUpForm extends Component {
           Sign Up
         </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <span>{error.message}</span>}
       </form>
+      </div>
     );
   }
 }
 
-const SignUpLink = () => (
-  <p>
-    {`Don't have an account yet? `}
-    <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>
-);
+
 
 
 function mapStateToProps(state) {
@@ -135,8 +131,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUpForm));
 
 // export default withRouter(SignUpPage);
 
-export { SignUpForm, SignUpLink };
+// export { SignUpForm, SignUpLink };

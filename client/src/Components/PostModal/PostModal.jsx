@@ -33,13 +33,13 @@ class AddModal extends React.Component {
       }
     }
   }
-    handleInputChange = event => {
-      const { name, value } = event.target;
+  handleInputChange = event => {
+    const { name, value } = event.target;
 
-      this.setState({
-        [name]: value,
-      });
-    };
+    this.setState({
+      [name]: value,
+    });
+  };
 
   render() {
     const externalCloseBtn = <button className="close" style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={this.toggle}>&times;</button>;

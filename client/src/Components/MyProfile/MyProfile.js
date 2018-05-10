@@ -11,8 +11,9 @@ import API from '../../utils/API.js';
 import UpdateProfileModal from "./UpdateProfileModal";
 import placeholder from "./placeholder.jpg";
 
-class MyProfile extends Component {
+class MyProfile2 extends Component {
     state = {
+
     }
     async componentDidMount() {
         const { match: { params } } = this.props;
@@ -101,4 +102,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile2);

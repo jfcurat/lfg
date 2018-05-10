@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from 'react-bootstrap4-modal';
+import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import UpdateProfileForm from "./UpdateProfileForm";
  
 class UpdateProfileModal extends React.Component {
@@ -15,19 +15,22 @@ class UpdateProfileModal extends React.Component {
     return (
       <div>    
       <button className='btn btn-primary' onClick={() => this.setState({showModal: true})}>Update Profile</button>
-      <Modal visible={this.state.showModal} dialogClassName='modal-lg' onClickBackdrop={this.modalBackdropClicked}>
-        <div>
-          {console.log(this.props.userInfo)}
-          {/* <img src={this.props.} className='modal-img' alt=''></img> */}
-          <div className='container'>
-            <UpdateProfileForm />
-          </div>  
-        </div>
-        <div className="modal-footer">
-          <button type="button" className="btn btn-primary" onClick={this.modalBackdropClicked}>
-            Close
-          </button>
-        </div>
+      <Modal isOpen={this.state.showModal} toggle={this.modalBackdropClicked}>
+        <ModalHeader>Edit Profile</ModalHeader>
+        <ModalBody>
+          <div>
+            {console.log(this.props.userInfo)}
+            {/* <img src={this.props.} className='modal-img' alt=''></img> */}
+            <div className='container'>
+              <UpdateProfileForm user={this.props.userInfo}/>
+            </div>  
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-primary" onClick={this.modalBackdropClicked}>
+              Close
+            </button>
+          </div>
+        </ModalBody>
       </Modal>
       </div>
     );

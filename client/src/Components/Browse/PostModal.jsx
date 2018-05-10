@@ -52,42 +52,6 @@ class AddModal extends React.Component {
     var buttonStyle = {
       paddingTop: "20px"
     };
-<<<<<<< HEAD
-    return (
-      <div>
-      <button className='btn btn-primary' onClick={()=> this.setState({ ...this.state, showModal: true})}>Create Post</button>
-      <div className="container" style={{borderRadius:'5px'}}>
-        <div style={buttonStyle}>
-          <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
-          <div className="bg-dark">
-            <ModalHeader>new lfg</ModalHeader>
-            <ModalBody>
-              <Form style={{ width: '90%', marginLeft: '5%', marginTop: '2%' }}>
-                <FormGroup inline>
-                  <Label for="platformSelect">Choose a platform</Label>
-                  <Input type="select" name="select" id="platform" onChange={this.handleInputChange} inline>
-                    <option>All Platforms</option>
-                    <option>XBOX</option>
-                    <option>PS</option>
-                    <option>PC</option>
-                  </Input>
-                </FormGroup>
-                <FormGroup>
-                  <Label for="playerNumber">Players needed</Label>
-                  <Input type="number" name="number" id="amountOfPlayersNeeded" placeholder="0" min="1" max="15" />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="messageText">Notes</Label>
-                  <Input type="textarea" name="text" id="post" placeholder="Lalalala..." />
-                </FormGroup>
-              </Form>
-            </ModalBody>
-            <ModalFooter>
-              <Button color="primary" onClick={this.saveNote}>Submit</Button>
-            </ModalFooter>
-            </div>
-          </Modal>
-=======
     console.log(this.props.games);
     if (this.props.userId) {
       return (
@@ -124,7 +88,6 @@ class AddModal extends React.Component {
             </Modal>
           </div>
         </div>
->>>>>>> master
         </div>
       );
     }

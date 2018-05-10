@@ -63,11 +63,7 @@ class SignInForm extends Component {
           type="password"
           placeholder="Password"
         />
-<<<<<<< HEAD
-        <button type="btn-primary submit" disabled={isInvalid}>
-=======
         <button type="submit" onClick={this.onSubmit} disabled={isInvalid}>
->>>>>>> master
           Sign In
         </button>
 

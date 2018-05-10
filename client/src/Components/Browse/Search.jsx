@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
       <div className="container"> 
       <div className="row">
       <form className='searchForm col-lg-8'>
-        
+          <div class="cursor">
           <input
             id='gameNameInput'
             className='form-control'
@@ -47,7 +47,8 @@ class SearchForm extends React.Component {
             onChange={this.handleInputChange}
             type='text'
             placeholder="ex. Halo, NBA 2K18"
-          />
+          /><i></i>
+                    </div>
           </form>
           <button className="searchForm" type='submit' onClick={this.handleFormSubmit}><i class="fas fa-search text-black"></i></button>
 

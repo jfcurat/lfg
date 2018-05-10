@@ -1,15 +1,12 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
-import axios from 'axios';
 import API from '../../utils/API';
 import SignInModal from '../AuthPages/SignInModal';
 import '../Navbar/Navbar.css';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as gameActionCreators from '../../actions/gameActions.js';
 import * as userActionCreators from '../../actions/userActions.js';
-import PostModal from '../Browse/PostModal';
 
 class AddModal extends React.Component {
   constructor(props) {
@@ -105,13 +102,11 @@ class AddModal extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // game: state.games.game,
     userId: state.user.user ? state.user.user._id : null,
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    // gameActions: bindActionCreators(gameActionCreators, dispatch),
     userActions: bindActionCreators(userActionCreators, dispatch),
   };
 }

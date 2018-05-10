@@ -9,13 +9,13 @@ export default function gameReducer(state = initialState.games, action) {
         data: action.data,
         error: false,
       };
-    };
+    }
     case actionTypes.GET_GAMES_FAILURE: {
       return {
         ...state,
         error: true,
       };
-    };
+    }
     case actionTypes.SET_GAME_SUCCESS: {
       return {
         ...state,
@@ -28,9 +28,9 @@ export default function gameReducer(state = initialState.games, action) {
         ...state,
         error: true,
       }
-    };
+    }
     default: {
       return state;
-    };
-  };
+    }
+  }
 };

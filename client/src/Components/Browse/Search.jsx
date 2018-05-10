@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as gameActionCreators from '../../actions/gameActions.js';
-import { Jumbotron, Container } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 class SearchForm extends React.Component {
   state = {

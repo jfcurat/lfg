@@ -7,10 +7,6 @@
     float: right;
 }
 
-.nav-item a:hover{
-    color: #ccc;
-    text-decoration: none;
-}
 
 Navbar {
     height: 20px auto;
@@ -27,4 +23,3 @@ Navbar {
     border: none;
     text-align: center;
   }
-

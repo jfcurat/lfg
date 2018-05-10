@@ -7,14 +7,8 @@ import { bindActionCreators } from 'redux';
 import * as userActionCreators from '../../actions/userActions.js';
 
 import { auth } from "../../firebase";
+import './modalstyle.css';
 
-
-// const SignUpPage = ({ history }) => (
-//   <div>
-//     <h1>SignUp</h1>
-//     <SignUpForm history={history} />
-//   </div>
-// );
 
 const INITIAL_STATE = {
   username: "",
@@ -72,8 +66,10 @@ class SignUpForm extends Component {
       username === "";
 
     return (
-      <div>
+
       <form onSubmit={this.onSubmit}>
+      <div className="container">
+      <div className="row">
         <input
           value={username}
           onChange={event =>
@@ -106,13 +102,15 @@ class SignUpForm extends Component {
           type="password"
           placeholder="Confirm your password"
         />
-        <button type="submit" disabled={isInvalid}>
-          Sign Up
+        <button type="submit" className="submit" disabled={isInvalid}>
+          create account
         </button>
 
         {error && <span>{error.message}</span>}
+        </div>
+        </div>
       </form>
-      </div>
+
     );
   }
 }

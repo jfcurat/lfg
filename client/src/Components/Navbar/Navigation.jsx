@@ -112,14 +112,6 @@ const NavigationNoAuth = () => (
     </div>
   </nav>
 
-  // <ol>
-  //   <li>
-  //     <Link to={routes.LANDING}>Landing</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.SIGN_IN}>SignIn</Link>
-  //   </li>
-  // </ol>
 );
 
 export default Navigation;

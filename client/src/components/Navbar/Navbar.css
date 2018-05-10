@@ -3,25 +3,23 @@
     padding-right: 10px;
     font-size: 11pt;
     color: #fff;
+    font-weight: lighter;
+    float: right;
 }
 
-/* .navbar-brand {
-    padding-right: 10px;
-} */
 
-.navbar {
+Navbar {
     height: 20px auto;
     background-color: #222;
     color: #fff;
 }
 
-button, .btn, .btn-primary {
+.nav-button button, .nav-button {
     background-color: #79e;
     height: 30px;
     font-size: 11pt;
     border-radius: 3px;
     color: #fff;
     border: none;
-    float: right;
     text-align: center;
   }

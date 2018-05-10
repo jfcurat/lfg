@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActionCreators from '../../actions/userActions.js';
 import { auth } from "../../firebase";
+import './modalstyle.css';
 
 const byPropKey = (propName, val) => ({
   [propName]: val
@@ -47,6 +48,8 @@ class SignInForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+      <div className="container">
+      <div className="row">
         <input
           value={email}
           onChange={event =>
@@ -54,6 +57,7 @@ class SignInForm extends Component {
           }
           type="text"
           placeholder="Email Address"
+          className="input-form"
         />
         <input
           value={password}
@@ -63,11 +67,13 @@ class SignInForm extends Component {
           type="password"
           placeholder="Password"
         />
-        <button type="submit" onClick={this.onSubmit} disabled={isInvalid}>
-          Sign In
+        <button type="submit" className="submit" onClick={this.onSubmit} disabled={isInvalid}>
+          sign in
         </button>
 
         {error && <p>{error.message}</p>}
+        </div>
+        </div>
       </form>
     );
   }

@@ -41,7 +41,7 @@ class GamePage extends Component {
       <div className="jumbotron">
         <h1 className="" style={{width: '75%', display: 'inline-block'}}>{this.state.game.name}</h1>
         <span className="" style={{width: '75%', float: 'left'}}>{this.state.game.summary}</span>
-        <img style={{height: '300px', width: 'auto'}} src={this.state.game.coverPhoto}></img>
+        <img style={{height: '300px', width: 'auto'}} src={this.state.game.coverPhoto} alt='game'></img>
         <hr className="my-4"></hr>
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         {console.log(this.state)}

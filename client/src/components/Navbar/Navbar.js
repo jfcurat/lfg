@@ -107,23 +107,15 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import {Modal, ModalBody}from "reactstrap";
+import SignUpForm from "../AuthPages/SignUp";
 
 import {
-  Collapse,
-  NavbarToggler,
   Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from 'reactstrap';
 import "./Navbar.css";
 
-import * as routes from "../../routes/routes";
+// import * as routes from "../../routes/routes";
 
 import "./Navbar.css";
 
@@ -170,47 +162,72 @@ const NavigationAuth = () => (
     </ul>
 
   </Navbar>
+)
+
+class NavigationNoAuth extends React.Component {
+  state = {
+    showSignInModal: false,
+    showSignUpModal: false,
+  };
+
+  toggleSignUp = () => {
+    this.setState({ showSignInModal: false, showSignUpModal: !this.state.showSignUpModal });
+  };
+
+  toggleSignIn = () => {
+    this.setState({ showSignInModal: !this.state.showSignInModal, showSignUpModal: this.state.showSignUpModal });
+  };
 
 
-const NavigationNoAuth = () => (
-  <Navbar className="navbar navbar-dark">
+  render() {
+    return(
+    <Navbar className="navbar navbar-dark">
 
+      <Link className="navbar-brand" to='/'>lfg-app</Link>
 
+      <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
+        <li className="nav-item">
+          <Link to="/search">search</Link>
+        </li>
+      </ul>
 
-    <a className="navbar-brand" href="/">
-      lfg-app
-    </a>
+      <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
 
-    <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0">
-      <li className="nav-item">
-        {/* <a className="nav-link" href="/browse">Browse</a> */}
-        <Link to="/search">search</Link>
+        <li className="button my-2 my-lg-0 pull-right">
+          {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
+          <SignInModal button='sign in' signIn={this.state.showSignInModal} signUp={this.state.showSignUpModal} toggleSignIn={this.toggleSignIn} toggleSignUp={this.toggleSignUp}/>
+          <Modal
+            isOpen={this.state.showSignUpModal}
+            toggle={this.toggleSignUp}
+          >
+            <ModalBody>
+            <div className="container">
+              <div className="row">
+                <ul className="col">
+                  <li>
+                    <span>Enter your info below to sign up:</span>
+                    <SignUpForm />
+                  </li>
+                </ul>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={this.toggleSignUp}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+            </ModalBody>
+          </Modal>
+        </li>
+      </ul>
+    </Navbar>
+    )
+  }
 
-      </li>
-
-    </ul>
-
-    <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
-
-      <li className="button my-2 my-lg-0 pull-right">
-        {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
-        <SignInModal button='sign in'/>
-      </li>
-      {/* CHANGE HERE */}
-    </ul>
-  </Navbar>
-
-
-
-
-  // <ol>
-  //   <li>
-  //     <Link to={routes.LANDING}>Landing</Link>
-  //   </li>
-  //   <li>
-  //     <Link to={routes.SIGN_IN}>SignIn</Link>
-  //   </li>
-  // </ol>
-);
+}
 
 export default NavBar;

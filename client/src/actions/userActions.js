@@ -1,6 +1,5 @@
 import actionTypes from './actionTypes';
 import API from '../utils/API.js';
-import { firebase } from '../firebase';
 
 export const getUserSuccess = data => {
   return {

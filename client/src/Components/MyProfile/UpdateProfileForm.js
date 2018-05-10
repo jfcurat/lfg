@@ -15,7 +15,7 @@ const platformOptions = [
 class UpdateProfileForm extends Component {
   // Setting the component's initial state
   state = {
-    username: "",
+    username: '',
     platform: [],
   };
 
@@ -34,26 +34,25 @@ class UpdateProfileForm extends Component {
     });
   };
 
-//---------------------------------------------------------------
-componentWillMount = () => {
-  this.selectedCheckboxes = new Set();
-  // this.selectedCheckboxes = [];
+  componentWillMount = () => {
+    this.selectedCheckboxes = new Set();
+    // this.selectedCheckboxes = [];
 
-}
-
-toggleCheckbox = label => {
-  if (this.selectedCheckboxes.has(label)) {
-    this.selectedCheckboxes.delete(label);
-  } else {
-    this.selectedCheckboxes.add(label);
   }
-  // this.setState({platform:[...this.state.platform, this.selectedCheckboxes]});
-  this.setState({platform:[...this.selectedCheckboxes]});
-  console.log(this.selectedCheckboxes);
-  console.log(this.state);
-}
 
-createCheckbox = label => (
+  toggleCheckbox = label => {
+    if (this.selectedCheckboxes.has(label)) {
+      this.selectedCheckboxes.delete(label);
+    } else {
+      this.selectedCheckboxes.add(label);
+    }
+    // this.setState({platform:[...this.state.platform, this.selectedCheckboxes]});
+    this.setState({platform:[...this.selectedCheckboxes]});
+    console.log(this.selectedCheckboxes);
+    console.log(this.state);
+  }
+
+  createCheckbox = label => (
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
@@ -64,15 +63,8 @@ createCheckbox = label => (
   createCheckboxes = () => (
     platformOptions.map(this.createCheckbox)
   )
-//----------------------------------------------------------------
 
   handleFormSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
-    const updatedUser = API.updateUserInfo(
-      this.state.user.fireBaseId, 
-      this.state.user.platforms, 
-      this.state.user.userName
-    );
     event.preventDefault();
     if (!this.state.username) {
     // if (!this.state.username || this.state.username === ???)   
@@ -102,28 +94,20 @@ createCheckbox = label => (
 
   render() {
     // Games You Play: incorporate with igdb
-    console.log(this.state)
+    console.log(this.props);
     return (
       <div>
-        <p>
-          Hello {this.state.username}
-        </p>
-        <p>
-          I see you play on {[...this.selectedCheckboxes]}
-        </p>
         <form className="form">
+          <span>Username:</span>
           <input
-            value={this.state.username}
+            value='nothing'
             name="username"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Username"
-            />
-            <p></p>
-          <span>Platforms:
+          />
+          <span>Platforms:</span>
           {this.createCheckboxes()}
-          </span>
-          <p></p>
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
       </div>

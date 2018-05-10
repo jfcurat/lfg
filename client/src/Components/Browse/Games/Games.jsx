@@ -5,8 +5,6 @@ import GameImage from './GameImage';
 import AddGameButton from './AddGameButton';
 import PostModal from '../PostModal';
 
-import API from '../../../utils/API.js';
-
 class Games extends Component {
   render() {
     if(this.props.games.games) {

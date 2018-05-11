@@ -13,31 +13,22 @@ const platformOptions = [
 ];
 
 class UpdateProfileForm extends Component {
-  // Setting the component's initial state
   state = {
-    username: '',
-    platform: [],
+    username: this.props.user.userName,
+    profilePhoto: this.props.user.profilePhoto,
+    platforms: [],
   };
 
   handleInputChange = event => {
-    // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const name = event.target.name;
-
-    if (name === "password") {
-      value = value.substring(0, 15);
-    }
-    // Updating the input's state
+    const { name, value } = event.target;
+    console.log(this.state);
     this.setState({
-      // [name]: value
-      username: value
+      [name]: value,
     });
   };
 
   componentWillMount = () => {
     this.selectedCheckboxes = new Set();
-    // this.selectedCheckboxes = [];
-
   }
 
   toggleCheckbox = label => {
@@ -46,10 +37,7 @@ class UpdateProfileForm extends Component {
     } else {
       this.selectedCheckboxes.add(label);
     }
-    // this.setState({platform:[...this.state.platform, this.selectedCheckboxes]});
-    this.setState({platform:[...this.selectedCheckboxes]});
-    console.log(this.selectedCheckboxes);
-    console.log(this.state);
+    this.setState({platforms:[...this.selectedCheckboxes]});
   }
 
   createCheckbox = label => (
@@ -64,50 +52,47 @@ class UpdateProfileForm extends Component {
     platformOptions.map(this.createCheckbox)
   )
 
-  handleFormSubmit = event => {
+  handleFormSubmit = async (event) => {
     event.preventDefault();
-    if (!this.state.username) {
-    // if (!this.state.username || this.state.username === ???)   
-      alert("Please enter a unique username to use");
-    } else if (this.state.platform.length < 1) {
-      alert(
-        `Please select at least one platform you play on ${this.state.username}!`
-      );
-    } else {
-      console.log(this.state.user);
-      const updatedUser = API.updateUserInfo(
-        this.state.user.fireBaseId, 
-        this.state.user.platforms, 
-        this.state.user.userName
-      );
-      console.log(updatedUser.data);
-      this.props.history.push(`/user/${updatedUser.data._id}`);
-    }
+    console.log(this.props.user.fireBaseId) 
+    console.log(this.state.platforms)
+    console.log(this.state.username)
+    console.log(this.state.profilePhoto);
+    await API.updateUserInfo(
+      this.props.user.fireBaseId, 
+      this.state.platforms, 
+      this.state.username,
+      this.state.profilePhoto,
+    );
 
     this.setState({
       username: "",
+      profilePhoto: '',
       platform: [],
     });
-    console.log (this.state)
-
+    this.props.close();
   };
 
   render() {
-    // Games You Play: incorporate with igdb
-    console.log(this.props);
     return (
       <div>
         <form className="form">
           <span>Username:</span>
           <input
-            value='nothing'
-            name="username"
+            value={this.state.username ? this.state.username : this.props.user.userName}
+            name='username'
             onChange={this.handleInputChange}
-            type="text"
-            placeholder="Username"
+            type='text'
           />
           <span>Platforms:</span>
           {this.createCheckboxes()}
+          <span>Profile Photo</span>
+          <input
+            type='text'
+            name='profilePhoto'
+            value={this.state.profilePhoto ? this.state.profilePhoto : this.props.user.profilePhoto}
+            onChange={this.handleInputChange}
+          />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
       </div>

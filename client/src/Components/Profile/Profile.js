@@ -51,13 +51,11 @@ class Profile extends Component {
                         <div className="pull-left">
                             <div className="row">
                             <div className="col-md-6">
-                                <img src={placeholder} alt="Placeholder" float="left" margin-right="15px" width="200px" height="auto" />
+                                <img src={this.state.user.profilePhoto ? this.state.user.profilePhoto : placeholder} alt="Placeholder" float="left" margin-right="15px" width="200px" height="auto" />
                             </div>
                             <div className="col-md-6">
                                 <div>I play on:</div>
                                 <div>{this.state.user.platforms}</div>
-                                <div>If time permits, display user's registered gamertags</div>
-                                {/* Display Gamertags? */}
                                 { this.props.user.user ? <UpdateProfileModal style={{color: 'black'}} userInfo={this.props.user.user} /> : null}
                             </div>
                             </div>

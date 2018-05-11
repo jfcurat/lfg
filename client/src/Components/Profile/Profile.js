@@ -13,6 +13,8 @@ import UpdateProfileModal from "../MyProfile/UpdateProfileModal";
 import API from '../../utils/API.js';
 import placeholder from "../MyProfile/placeholder.jpg";
 
+import './Profile.css';
+
 
 
 class Profile extends Component {
@@ -76,15 +78,15 @@ class Profile extends Component {
                         {/* <p>{this.state.user.about}</p> */}
                     </div>
         
-                    <div className="col-xs-12 col-md-4" border="1px solid #cccccc" max-width="270px" overflow="auto" background-color="#ffffff" float="left" margin-left="9%">
+                    <div className="col-xs-12 col-md-4 pull-right" border="1px solid #cccccc" max-width="270px" overflow="auto" background-color="#ffffff" float="left" margin-left="9%">
                         <section id="sidebar">
                             <h2>Following</h2>
                             <ul>
                                 {this.state.user.following.map(followingUser => {
                                     return(
-                                        <Link to={`/users/${followingUser._id}`}>
-                                            <div key={followingUser._id}>
-                                                <img src={followingUser.profilePhoto} alt='Profile'></img>
+                                        <Link to={`/users/${followingUser._id}`} >
+                                            <div key={followingUser._id} >
+                                                <img src={followingUser.profilePhoto} alt='Profile' className='followersCard'></img>
                                                 <span>{followingUser.userName}</span>
                                             </div>
                                         </Link>
@@ -96,8 +98,8 @@ class Profile extends Component {
                                 {this.state.user.followers.map(followerUser => {
                                     return(
                                         <Link to={`/users/${followerUser._id}`}>
-                                            <div key={followerUser._id }>
-                                                <img src={followerUser.profilePhoto} alt='Profile'></img>
+                                            <div key={followerUser._id } >
+                                                <img src={followerUser.profilePhoto} alt='Profile' className='followersCard'></img>
                                                 <span>{followerUser.userName}</span>
                                             </div>
                                         </Link>

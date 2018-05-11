@@ -30,7 +30,12 @@ class Feed extends Component {
                       <Link to={`/game/${post.gameId}`}>{post.game}</Link>
                     </div>
                     <div className='col-sm-3'>
-                      <p>{post.post}</p>
+                      <p>Platform: </p>
+                      <p>{post.platform}</p>
+                    </div>
+                    <div className='col-sm-3'>
+                      <p>Players needed: </p>
+                      <p>{post.amountOfPlayersNeeded}</p>
                     </div>
                   </div>
                 </div>

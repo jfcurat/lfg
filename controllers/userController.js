@@ -10,7 +10,7 @@ async function get(req, res) {
         path: 'posts',
         model: 'Post',
         populate: {
-          path: 'game',
+          path: 'gameId',
           model: 'Game',
         }
       }
@@ -38,7 +38,7 @@ async function getSignIn(req, res) {
         path: 'posts',
         model: 'Post',
         populate: {
-          path: 'game',
+          path: 'gameId',
           model: 'Game',
         }
       }

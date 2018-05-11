@@ -14,20 +14,25 @@ class MyFeed extends Component {
         userName: ''
     };
     render() {
-        console.log(this.props);        
+        let posts = true;
+        console.log(this.props);      
         const postArrays = this.props.user.user.following.map(followingUser => {
-            return followingUser.posts.map(post => {
-                return {
-                    post: post.post,
-                    amountOfPlayersNeeded: post.amountOfPlayersNeeded,
-                    userId: followingUser._id,
-                    userName: followingUser.userName,
-                    timeCreated: post.timeCreated,
-                    platform: post.platform,
-                    gameId: post.gameId,
-                    // game: post.game.name,
-                }
-            })
+            if(followingUser.posts) {
+                return followingUser.posts.map(post => {
+                    return {
+                        post: post.post,
+                        amountOfPlayersNeeded: post.amountOfPlayersNeeded,
+                        userId: followingUser._id,
+                        userName: followingUser.userName,
+                        timeCreated: post.timeCreated,
+                        platform: post.platform,
+                        gameId: post.gameId,
+                        game: post.gameId.name,
+                    }
+                })
+            } else {
+                return posts = false;
+            }
         })
         console.log(postArrays);
         return (
@@ -35,7 +40,7 @@ class MyFeed extends Component {
                 <div className="card-header text-center">
                     <h1>My Feed</h1>
                 </div>
-                <Feed postArrays={postArrays} />
+                {posts ? <Feed postArrays={postArrays} /> : <p>There are no posts yet</p>}
             </div>
         )
     }

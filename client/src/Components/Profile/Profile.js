@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import Feed from '../Feed';
 // import UpdateProfile from "./UpdateProfile"
 // import UpdateProfile from "../MyProfile/UpdateProfile";
 
@@ -36,22 +38,32 @@ class Profile extends Component {
         if(!this.state.user) {
             return null
         }
-        // if (!this.props.user) {
-        //     return null;
-        //   }
-        // this.state.user ? null : <UpdateProfileModal />;
-        console.log(this.state);
+        const posts = this.state.user.posts.map(post => {
+            return {
+                post: post.post,
+                amountOfPlayersNeeded: post.amountOfPlayersNeeded,
+                userId: this.state.user._id,
+                userName: this.state.user.userName,
+                timeCreated: post.timeCreated,
+                platform: post.platform,
+                gameId: post.gameId._id,
+                game: post.gameId.name,
+            }     
+        })
         return (
             <div>
               <div className="container">
             <h1>Welcome to {this.state.user.userName}'s Profile Page</h1>   
                 <div className="row">
-                    <div className="col-xs-12 col-md-6" margin-left = "10%" border="1px solid #ddd" background="#fff" padding-left= "3%">
+                    <div className="col-xs-12 col-md-6" margin-left="10%" border="1px solid #ddd" background="#fff" padding-left="3%">
                         {/* <h2>{this.state.user.name}</h2> */}
                         <div className="pull-left">
                             <div className="row">
                             <div className="col-md-6">
-                                <img src={this.state.user.profilePhoto ? this.state.user.profilePhoto : placeholder} alt="Placeholder" float="left" margin-right="15px" width="200px" height="auto" />
+                                <img 
+                                    src={this.state.user.profilePhoto ? this.state.user.profilePhoto : placeholder} 
+                                    alt="Placeholder" float="left" margin-right="15px" width="200px" height="auto" 
+                                />
                             </div>
                             <div className="col-md-6">
                                 <div>I play on:</div>
@@ -67,17 +79,37 @@ class Profile extends Component {
                     <div className="col-xs-12 col-md-4" border="1px solid #cccccc" max-width="270px" overflow="auto" background-color="#ffffff" float="left" margin-left="9%">
                         <section id="sidebar">
                             <h2>Following</h2>
-                            {/* probably have to adjust here for relational stuff */}
-                            <div>{this.state.user.following}</div>
+                            <ul>
+                                {this.state.user.following.map(followingUser => {
+                                    return(
+                                        <Link to={`/users/${followingUser._id}`}>
+                                            <div key={followingUser._id}>
+                                                <img src={followingUser.profilePhoto} alt='Profile'></img>
+                                                <span>{followingUser.userName}</span>
+                                            </div>
+                                        </Link>
+                                    )
+                                })}
+                            </ul>
                             <h2>Followers</h2>
-                            {/* probably have to adjust here for relational stuff */}
-                            <div>{this.state.user.following}</div>
+                            <ul>
+                                {this.state.user.followers.map(followerUser => {
+                                    return(
+                                        <Link to={`/users/${followerUser._id}`}>
+                                            <div key={followerUser._id }>
+                                                <img src={followerUser.profilePhoto} alt='Profile'></img>
+                                                <span>{followerUser.userName}</span>
+                                            </div>
+                                        </Link>
+                                    )
+                                })}
+                            </ul>
                         </section>
                     </div>
                 </div>
                 <div className="row">
                     <h2>Posts:</h2>
-                    {/* <div>{this.state.user.posts}</div> */}
+                    <Feed postArrays={posts}/>
                 </div>
             </div>
           </div>

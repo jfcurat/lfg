@@ -24,7 +24,7 @@ class Feed extends Component {
                 <div className='card-header'>
                   <div className='row'>
                     <div className='col-sm-9'>
-                      <Link to={`/users/${post.userId}`}>{post.userName}</Link>
+                      <Link to={`/user/${post.userId}`}>{post.userName}</Link>
                     </div>
                     <div className='col-sm-9'>
                       <Link to={`/game/${post.gameId}`}>{post.game}</Link>
@@ -32,7 +32,6 @@ class Feed extends Component {
                     <div className='col-sm-3'>
                       <p>{post.post}</p>
                     </div>
-                    <span>{post}</span>
                   </div>
                 </div>
                 <div className='card-body bg-light'>

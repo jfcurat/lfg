@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 
-import feed from "../Feed";
+import Feed from "../Feed";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,9 +13,9 @@ class MyFeed extends Component {
         post: '',
         userName: ''
     };
-
     render() {
-        const postArrays = this.props.user.following.map(followingUser => {
+        console.log(this.props);        
+        const postArrays = this.props.user.user.following.map(followingUser => {
             return followingUser.posts.map(post => {
                 return {
                     post: post.post,
@@ -25,11 +25,11 @@ class MyFeed extends Component {
                     timeCreated: post.timeCreated,
                     platform: post.platform,
                     gameId: post.gameId,
-                    game: post.game.name,
+                    // game: post.game.name,
                 }
             })
         })
-
+        console.log(postArrays);
         return (
             <div className="card bg-light" style={{ marginTop: 15, marginBottom: 15, backgroundColor: "gray" }}>
                 <div className="card-header text-center">

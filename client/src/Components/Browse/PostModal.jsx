@@ -31,7 +31,7 @@ class AddModal extends React.Component {
     try {
       console.log(this.state);
       console.log(this.props);
-      await API.newPost({post: this.state.post, amountOfPlayersNeeded: this.state.amountOfPlayersNeeded, userId: this.props.userId ? this.props.userId : null, gameId: this.props.game.id, platform: this.state.platform});
+      await API.newPost({post: this.state.post, amountOfPlayersNeeded: this.state.amountOfPlayersNeeded, userId: this.props.userId ? this.props.userId : null, gameId: this.props.games._id, platform: this.state.platform});
       this.setState({...this.state,  showModal: false, note: '' });
       // this.props.getSaved();
     } catch (err) {

@@ -40,7 +40,7 @@ ul > li {
   list-style-type: none;
   margin-top: -30px;
 }
-
-.modal-lg, {
-  background-color: #343A40;
+.modal-content {
+  background-color: rgba(34, 34, 34, 0.8);
+  border-radius: 10px;
 }

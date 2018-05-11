@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal, ModalHeader, ModalBody} from 'reactstrap';
 import UpdateProfileForm from "./UpdateProfileForm";
+import './UpdateProfile.css';
  
 class UpdateProfileModal extends React.Component {
   state = {
@@ -14,7 +15,7 @@ class UpdateProfileModal extends React.Component {
   render() {
     return (
       <div>    
-      <button className='btn btn-primary' onClick={() => this.setState({showModal: true})}>Update Profile</button>
+      <button className='update-button' onClick={() => this.setState({showModal: true})}>Update Profile</button>
       <Modal isOpen={this.state.showModal} toggle={this.modalBackdropClicked}>
         <ModalHeader>Edit Profile</ModalHeader>
         <ModalBody>
@@ -24,11 +25,6 @@ class UpdateProfileModal extends React.Component {
             <div className='container'>
               <UpdateProfileForm close={this.modalBackdropClicked} user={this.props.userInfo}/>
             </div>  
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-primary" onClick={this.modalBackdropClicked}>
-              Close
-            </button>
           </div>
         </ModalBody>
       </Modal>

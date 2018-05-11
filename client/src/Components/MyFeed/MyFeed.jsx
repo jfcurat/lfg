@@ -6,6 +6,7 @@ import Feed from "../Feed";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActionCreators from '../../actions/userActions.js';
+import { Jumbotron, Container } from 'reactstrap';
 
 class MyFeed extends Component {
     state = {
@@ -36,12 +37,24 @@ class MyFeed extends Component {
         })
         console.log(postArrays);
         return (
-            <div className="card bg-light" style={{ marginTop: 15, marginBottom: 15, backgroundColor: "gray" }}>
-                <div className="card-header text-center">
-                    <h1>My Feed</h1>
+        <div>
+            <Jumbotron fluid>
+                <div className="container">
+                    <h1 className="display-2">My Feed</h1>
                 </div>
-                {posts ? <Feed postArrays={postArrays} /> : <p>There are no posts yet</p>}
+            </Jumbotron>
+
+            <div class="container">
+            <div class="row">
+            <div class="col-lg-10">
+
+            {posts ? <Feed postArrays={postArrays} /> : <p>There are no posts yet</p>}
+
             </div>
+            </div>
+            </div>
+
+        </div>
         )
     }
 }

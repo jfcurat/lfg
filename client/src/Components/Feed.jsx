@@ -16,11 +16,11 @@ class Feed extends Component {
     const posts = this.formatPostsArray();
     console.log(posts);
     return (
-      <div className='card bg-light' style={{ marginTop: 15, marginBottom: 15, backgroundColor: 'gray' }}>
-        <div className='card-body bg-light'>
+      <div className='card bg-dark' style={{ marginTop: 15, marginBottom: 15 }}>
+        <div className='card-body'>
           <div>
             {posts.map(post =>
-              <div className='card bg-light' key={post.post} style={{ marginTop: 20 }} >
+              <div className='card' key={post.post} style={{ marginTop: 20 }} >
                 <div className='card-header'>
                   <div className='row'>
                     <div className='col-sm-9'>
@@ -39,7 +39,7 @@ class Feed extends Component {
                     </div>
                   </div>
                 </div>
-                <div className='card-body bg-light'>
+                <div className='card-body bg-dark'>
                   <p>{post.post}</p>
                 </div>
               </div>

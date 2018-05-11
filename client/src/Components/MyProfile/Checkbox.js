@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './UpdateProfile.css';
 
 class Checkbox extends Component {
   state = {
@@ -22,14 +23,16 @@ class Checkbox extends Component {
     const { isChecked } = this.state;
 
     return (
-      <div className="checkbox">
-        <label>
-          {label}<input
+      <div>
+      <input
+            className="form-check-input"
             type="checkbox"
             value={label}
             checked={isChecked}
             onChange={this.toggleCheckboxChange}
           />
+        <label class="form-check-label">
+          {label}
         </label>
       </div>
     );

@@ -71,6 +71,17 @@ async function patch(req, res) {
       res.status(200).send('ok');
     } catch(err) {
       console.log(err);
+      throw err;      
+    }
+  } else {
+    const { fireBaseId, profilePhoto, platforms, userName } = req.body;
+    try {
+      console.log(userName)
+      await db.User.findOneAndUpdate({ fireBaseId }, { profilePhoto, platforms, userName });
+      res.status(200).send('ok');
+    } catch (err) {
+      console.log(err);      
+      throw err;
     }
   }
 }

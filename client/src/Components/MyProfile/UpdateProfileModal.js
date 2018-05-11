@@ -22,7 +22,7 @@ class UpdateProfileModal extends React.Component {
             {console.log(this.props.userInfo)}
             {/* <img src={this.props.} className='modal-img' alt=''></img> */}
             <div className='container'>
-              <UpdateProfileForm close={this.modalBackdropClicked} user={this.props.userInfo}/>
+              <UpdateProfileForm user={this.props.userInfo}/>
             </div>  
           </div>
           <div className="modal-footer">

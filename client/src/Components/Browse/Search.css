@@ -34,10 +34,10 @@ button:focus {
 }
 .cursor i {
     position: absolute;
-    width: 5px;
+    width: 2px;
     height: 80%;
     background-color: #fff;
-    left: 3px;
+    left: 7px;
     top: 10%;
     animation-name: blink;
     animation-duration: 1000ms;

@@ -50,7 +50,7 @@ class SearchForm extends React.Component {
           /><i></i>
                     </div>
           </form>
-          <button className="searchForm" type='submit' onClick={this.handleFormSubmit}><i class="fas fa-search text-black"></i></button>
+          <button className="searchForm" type='submit'><i class="fas fa-search text-black"></i></button>
 
       </div>
       </div>

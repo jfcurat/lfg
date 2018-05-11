@@ -38,7 +38,7 @@ class SearchForm extends React.Component {
       <div className="container"> 
       <div className="row">
       <form className='searchForm col-lg-8'>
-          <div class="cursor">
+          <div className="cursor">
           <input
             id='gameNameInput'
             className='form-control'

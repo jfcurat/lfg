@@ -14,6 +14,10 @@
     color: #fff;
 }
 
+.fa-search {
+    font-size: 125%;
+}
+
 
 button {
     background-color: rgba(0,0,0,0);
@@ -21,8 +25,6 @@ button {
     color: #fff;
     font-size: 30px;
     font-weight: lighter;
-    margin-left: 0;
-    float: right;
 }
 
 button:focus {

@@ -13,7 +13,6 @@ export default {
 
   searchGameById: async function(id) {
     try {
-      console.log(id);
       const results = await axios.get('/api/game/' + id);
       return results.data;
     } catch(err) {
@@ -77,9 +76,10 @@ export default {
     }
   }, 
 
-  updateUserInfo: async function(fireBaseId, platforms, userName) {
+  updateUserInfo: async function(fireBaseId, platforms, userName, profilePhoto) {
     try {
-      const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName});
+      console.log(fireBaseId, platforms, userName, profilePhoto);
+      const updatedUser = await axios.patch('/api/users', {fireBaseId, platforms, userName, profilePhoto});
       return updatedUser;
     } catch(err) {
       return err;

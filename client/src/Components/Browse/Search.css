@@ -34,7 +34,7 @@ button:focus {
 }
 .cursor i {
     position: absolute;
-    width: 2px;
+    width: 5px;
     height: 80%;
     background-color: #fff;
     left: 3px;

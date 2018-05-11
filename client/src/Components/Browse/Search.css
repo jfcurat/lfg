@@ -14,6 +14,10 @@
     color: #fff;
 }
 
+.fa-search {
+    font-size: 125%;
+}
+
 
 button {
     background-color: rgba(0,0,0,0);
@@ -21,8 +25,6 @@ button {
     color: #fff;
     font-size: 30px;
     font-weight: lighter;
-    margin-left: 0;
-    float: right;
 }
 
 button:focus {
@@ -37,7 +39,7 @@ button:focus {
     width: 5px;
     height: 80%;
     background-color: #fff;
-    left: 3px;
+    left: 7px;
     top: 10%;
     animation-name: blink;
     animation-duration: 1000ms;

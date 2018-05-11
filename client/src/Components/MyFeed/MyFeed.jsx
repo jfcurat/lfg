@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 
-import feed from  "../Feed";
+import feed from "../Feed";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -24,22 +24,23 @@ class MyFeed extends Component {
                     userName: followingUser.userName,
                     timeCreated: post.timeCreated,
                     platform: post.platform,
+                    gameId: post.gameId,
                     game: post.game.name,
-                  }
+                }
             })
-          })
+        })
 
         return (
             <div className="card bg-light" style={{ marginTop: 15, marginBottom: 15, backgroundColor: "gray" }}>
                 <div className="card-header text-center">
                     <h1>My Feed</h1>
                 </div>
-            <Feed postArrays={postArrays} />
+                <Feed postArrays={postArrays} />
             </div>
         )
     }
 }
-                                                
+
 function mapStateToProps(state) {
     return {
         user: state.user,
@@ -50,6 +51,6 @@ function mapDispatchToProps(dispatch) {
         userActions: bindActionCreators(userActionCreators, dispatch),
     };
 }
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(MyFeed);
 

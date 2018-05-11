@@ -13,7 +13,6 @@ export default {
 
   searchGameById: async function(id) {
     try {
-      console.log(id);
       const results = await axios.get('/api/game/' + id);
       return results.data;
     } catch(err) {

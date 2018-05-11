@@ -13,7 +13,6 @@ const platformOptions = [
 ];
 
 class UpdateProfileForm extends Component {
-  // Setting the component's initial state
   state = {
     username: this.props.user.userName,
     profilePhoto: this.props.user.profilePhoto,

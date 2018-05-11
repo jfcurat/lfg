@@ -17,11 +17,11 @@ class Feed extends Component {
     console.log(posts);
     return (
       <div className='card bg-dark' style={{ marginTop: 15, marginBottom: 15 }}>
-        <div className='card-body'>
+        <div className='card-body bg-dark'>
           <div>
             {posts.map(post =>
-              <div className='card' key={post.post} style={{ marginTop: 20 }} >
-                <div className='card-header'>
+              <div className='card bg-dark' key={post.post} style={{ marginTop: 20 }} >
+                <div className='card-header bg-dark'>
                   <div className='row'>
                     <div className='col-sm-9'>
                       <Link to={`/user/${post.userId}`}>{post.userName}</Link>

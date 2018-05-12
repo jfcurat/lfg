@@ -21,7 +21,7 @@ app.use(gameRouter, userRouter, postRouter);
 
 mongoose.Promise = Promise;
 
-mongoose.connect(process.env.MONGODB_URI  || 'mongodb://localhost/lfgdb');
+mongoose.connect(process.env.MONGODB_URI  || 'mongodb://<dbuser>:<dbpassword>@ds139370.mlab.com:39370/heroku_lqg9hjmt');
 
 // mongoose.connect(MONGODB_URI, {
 //   useMongoClient: true

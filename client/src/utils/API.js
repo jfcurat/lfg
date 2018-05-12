@@ -48,10 +48,9 @@ export default {
 
   getUser: async function(id) {
     try {
-      console.log(id);
       const user = await axios.get('/api/users/' + id);
       console.log(user);
-      return user;
+      return user.data;
     } catch(err) {
       return err;
     }

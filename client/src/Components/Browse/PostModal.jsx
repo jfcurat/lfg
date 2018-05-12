@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import API from '../../utils/API';
-import SignInModal from '../AuthPages/SignInModal';
 import '../Navbar/Navbar.css';
 
 import { connect } from 'react-redux';
@@ -31,8 +30,8 @@ class AddModal extends React.Component {
     try {
       console.log(this.state);
       console.log(this.props);
-      await API.newPost({post: this.state.post, amountOfPlayersNeeded: this.state.amountOfPlayersNeeded, userId: this.props.userId ? this.props.userId : null, gameId: this.props.games._id, platform: this.state.platform});
-      this.setState({...this.state,  showModal: false, note: '' });
+      await API.newPost({ post: this.state.post, amountOfPlayersNeeded: this.state.amountOfPlayersNeeded, userId: this.props.userId ? this.props.userId : null, gameId: this.props.games._id, platform: this.state.platform });
+      this.setState({ ...this.state, showModal: false, note: '' });
       // this.props.getSaved();
     } catch (err) {
       console.log(err);
@@ -52,11 +51,9 @@ class AddModal extends React.Component {
     var buttonStyle = {
       paddingTop: "20px"
     };
-    console.log(this.props.games);
-    if (this.props.userId) {
-      return (
-        <div>
-        <button className='btn btn-primary' onClick={()=> this.setState({showModal: true})}>Create Post</button>
+    return (
+      <div>
+        <button className='btn btn-primary' onClick={() => this.setState({ showModal: true })}>Create Post</button>
         <div className="container">
           <div style={buttonStyle}>
             <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
@@ -88,17 +85,11 @@ class AddModal extends React.Component {
             </Modal>
           </div>
         </div>
-        </div>
-      );
-    }
-    return <ul className="navbar-nav ml-auto">
-    <li>
-      {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
-      <SignInModal button='sign in'/>
-    </li>
-  </ul>
+      </div>
+    );
   }
 }
+
 
 function mapStateToProps(state) {
   return {

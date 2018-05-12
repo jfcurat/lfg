@@ -20,7 +20,6 @@ class UpdateProfileModal extends React.Component {
         <ModalHeader>Edit Profile</ModalHeader>
         <ModalBody>
           <div>
-            {console.log(this.props.userInfo)}
             {/* <img src={this.props.} className='modal-img' alt=''></img> */}
             <div className='container'>
               <UpdateProfileForm close={this.modalBackdropClicked} user={this.props.userInfo}/>

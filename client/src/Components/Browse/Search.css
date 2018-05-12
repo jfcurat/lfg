@@ -15,16 +15,18 @@
 }
 
 .fa-search {
-    font-size: 125%;
+  font-size: 130%;
+  margin-top: 60px;
+  margin-left: 10px;
 }
 
 
 button {
-    background-color: rgba(0,0,0,0);
-    border: none;
-    color: #fff;
-    font-size: 30px;
-    font-weight: lighter;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  font-weight: lighter;
 }
 
 button:focus {
@@ -33,22 +35,24 @@ button:focus {
 
 .cursor {
     position: relative;
+    float: left;
+    width: 90%;
 }
 .cursor i {
-    position: absolute;
-    width: 2px;
-    height: 80%;
-    background-color: #fff;
-    left: 7px;
-    top: 10%;
-    animation-name: blink;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-    opacity: 1;
+  position: absolute;
+  width: 2px;
+  height: 26%;
+  background-color: #fff;
+  left: 10px;
+  top: 53px;
+  animation-name: blink;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  opacity: 1;
 }
 
 .cursor input:focus + i {
-    display: none;
+  display: none;
 }
 
 @keyframes blink {

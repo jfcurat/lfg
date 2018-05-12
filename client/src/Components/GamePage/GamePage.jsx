@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as gameActionCreators from '../../actions/gameActions.js';
 import PostModal from '../Browse/PostModal';
 import API from '../../utils/API';
+import SignInModal from '../AuthPages/SignInModal';
 
 class GamePage extends Component {
   state = {
@@ -32,10 +33,12 @@ class GamePage extends Component {
         userName: post.userId.userName,
         timeCreated: post.timeCreated,
         platform: post.platform,
-        game: this.props.game.name,
+        game: this.state.game.name,
+        gameId: this.state.game._id,
       }
     })
     console.log(this.state.games);
+    console.log(postArrays);
     return (
       <div>
       <div className="jumbotron">
@@ -43,8 +46,6 @@ class GamePage extends Component {
         <span className="" style={{width: '75%', float: 'left'}}>{this.state.game.summary}</span>
         <img style={{height: '300px', width: 'auto'}} src={this.state.game.coverPhoto} alt='game'></img>
         <hr className="my-4"></hr>
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        {console.log(this.state)}
         <PostModal games={this.state.game}/>
       </div>
       <Feed postArrays={postArrays}/>
@@ -56,6 +57,7 @@ class GamePage extends Component {
 function mapStateToProps(state) {
   return {
     game: state.games.currentGame,
+    user: state.user,
   };
 }
 function mapDispatchToProps(dispatch) {

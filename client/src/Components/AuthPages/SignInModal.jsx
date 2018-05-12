@@ -1,5 +1,5 @@
 import React from "react";
-import {Modal, ModalBody} from "reactstrap";
+import { Modal, ModalBody } from "reactstrap";
 import SignInForm from "./SignIn";
 import SignUpModal from "./SignUpModal";
 import "./modalstyle.css";
@@ -12,7 +12,7 @@ class SignInModal extends React.Component {
           className="nav-button"
           onClick={this.props.toggleSignIn}
         >{this.props.button.trim()}</button>
-        <Modal 
+        <Modal
           isOpen={this.props.signIn}
           toggle={this.props.toggleSignIn}
         >
@@ -22,16 +22,16 @@ class SignInModal extends React.Component {
             <div className="row">
               <ul className="col">
 
-                  <SignInForm />
+                <SignInForm />
               </ul>
             </div>
-            </ModalBody>
-            <div className="modal-footer">
+          </ModalBody>
+          <div className="modal-footer">
 
-                    <p>{`Don't have an account yet? `}
-                    <SignUpModal toggle={this.props.toggleSignUp} signUpModal={this.props.signUp}/>
-                    </p>
-            </div>
+            <p>{`Don't have an account yet? `}
+              <SignUpModal toggle={this.props.toggleSignUp} signUpModal={this.props.signUp} />
+            </p>
+          </div>
 
         </Modal>
       </div>

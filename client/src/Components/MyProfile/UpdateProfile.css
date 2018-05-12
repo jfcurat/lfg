@@ -1,5 +1,5 @@
 .form {
-width: 100%;
+  width: 100%;
 }
 
 .form input {
@@ -8,7 +8,6 @@ width: 100%;
   margin-bottom: 5px;
   width: 100%;
 }
-
 
 .update-button {
   border: 1px solid #79e;
@@ -31,7 +30,6 @@ width: 100%;
   text-align: center;
   padding: 10px;
   margin-bottom: 20px;
-
 }
 
 .checkbox {
@@ -39,7 +37,7 @@ width: 100%;
 }
 
 .form-check-label {
-margin-left: 40px;
+  margin-left: 40px;
 }
 
 span {
@@ -48,5 +46,4 @@ span {
 
 .modal-title {
   font-weight: lighter;
-
 }

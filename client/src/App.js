@@ -7,7 +7,6 @@ import { firebase } from "./firebase";
 import NoMatch from "./Components/NoMatch.jsx";
 import MyFeed from "./Components/MyFeed/MyFeed";
 import GamePage from "./Components/GamePage/GamePage.jsx";
-import "./App.css";
 
 import Profile from "./Components/Profile/Profile";
 import NavBar from "./Components/Navbar/Navbar";
@@ -36,6 +35,7 @@ class App extends Component {
           <NavBar authUser={this.state.authUser} />
           <Wrapper>
           <Switch>
+            <Route exact path="/" component={Profile} />          
             <Route exact path="/myfeed" component={MyFeed} />
             <Route exact path="/search" component={Browse} />
             <Route exact path="/myprofile" component={Profile} />

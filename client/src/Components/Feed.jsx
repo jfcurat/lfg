@@ -5,7 +5,6 @@ import moment from 'moment';
 class Feed extends Component {
   formatPostsArray() {
     const { postArrays } = this.props;
-    console.log(postArrays);
     const posts = [].concat.apply([], postArrays);
     const sortedPosts = posts.sort((postA, postB) => {
       return moment(postA.timeCreated).diff(moment(postB.timeCreated))
@@ -20,7 +19,6 @@ class Feed extends Component {
 
   render() {
     const posts = this.formatPostsArray();
-    console.log(posts);
     return (
       <div className='container' style={{ marginTop: 15, marginBottom: 15 }}>
       <div className='card bg-dark' style={{ marginTop: 15, marginBottom: 15 }}>
@@ -32,7 +30,7 @@ class Feed extends Component {
                   <div className='row'>
                     <div className='col-sm-9 col-md-4'>
                       <span>
-                      <Link to={`/user/${post.userId}`}>{post.userName} </Link> posted at {post.timeCreated}
+                      <Link to={`/user/${post.userId}`}>{post.userName} </Link> posted {post.timeCreated}
                       </span>
                     </div>
                     <div className='col-sm-9 col-md-3'>

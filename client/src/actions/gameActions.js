@@ -33,7 +33,7 @@ export const retrieveGame = gameId => {
       const game = await API.searchGameById(gameId);
       dispatch(setGameSuccess(game));
     } catch(err) {
-      console.log(err);
+      throw err;
       dispatch(setGameFailure());
     }
   };
@@ -42,12 +42,10 @@ export const retrieveGame = gameId => {
 export const retrieveGames = gameName => {
   return async function(dispatch) {
     try {
-      console.log(gameName);
       const games = await API.searchGames(gameName);
-      console.log(games);
       dispatch(getGamesSuccess(games));
     } catch(err) {
-      console.log(err);
+      throw err;
       dispatch(getGamesFailure());
     }
   };

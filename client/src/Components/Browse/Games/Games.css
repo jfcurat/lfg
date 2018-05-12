@@ -24,13 +24,12 @@ img {
   min-height: 250px auto;
 }
 
-button {
-  margin-left: 5%;
+.gamesButton {
+  margin-left: 2%;
   float: right;
-  margin-right: 5%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  
+  margin-right: 8px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .modal-img {
@@ -58,7 +57,7 @@ p {
   padding: 20px; 
 }
 
-.col {
+.gameInfo .col {
   /* border: 10px solid #343A40; */
   font-family: 'Quantico', sans-serif;
   background-color: black;

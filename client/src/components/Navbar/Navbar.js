@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Modal, ModalBody}from "reactstrap";
+import { Modal, ModalBody } from "reactstrap";
 import SignUpForm from "../AuthPages/SignUp";
 
 import { Navbar } from "reactstrap";
 import "./Navbar.css";
-
-// import * as routes from "../../routes/routes";
 
 import "./Navbar.css";
 
@@ -14,7 +12,6 @@ import SignInModal from "../AuthPages/SignInModal";
 import SignOutButton from "../AuthPages/SignOut";
 import "../AuthPages/modalstyle.css";
 
-// use authUser object for session handling later
 const NavBar = ({ authUser }) => (
   <div>{authUser ? <NavigationAuth /> : <NavigationNoAuth />}</div>
 );
@@ -67,7 +64,11 @@ class NavigationNoAuth extends React.Component {
     return (
       <Navbar className="navbar navbar-dark">
         <span className="navbar-brand float-left">
-          {this.props.authUser ? <Link to="/myfeed">lfg-app</Link> : <Link to="/search">lfg-app</Link>}
+          {this.props.authUser ? (
+            <Link to="/myfeed">lfg-app</Link>
+          ) : (
+            <Link to="/search">lfg-app</Link>
+          )}
         </span>
 
         <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0 pull-left">
@@ -78,7 +79,6 @@ class NavigationNoAuth extends React.Component {
 
         <ul className="nav nav-pills nav-fill ml-auto my-2 my-lg-0">
           <li className="nav-button my-2 my-lg-0 pull-right">
-            {/* <Link to={routes.SIGN_IN}>SignIn</Link> */}
             <SignInModal
               button="sign in"
               className="nav-button"

@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import * as gameActionCreators from '../../actions/gameActions.js';
-import { Jumbotron, Container } from 'reactstrap';
-import './Search.css';
+import * as gameActionCreators from "../../actions/gameActions.js";
+import { Jumbotron, Container } from "reactstrap";
+import "./Search.css";
 
 class SearchForm extends React.Component {
   state = {
-    gameName: '',
-  }
+    gameName: ""
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -31,42 +31,46 @@ class SearchForm extends React.Component {
       <Jumbotron fluid>
         <Container fluid>
           <div className="container">
-            <h1 className="display-2 text-left">
-              browse games </h1>
+            <h1 className="display-2 text-left">browse games </h1>
           </div>
         </Container>
         <div className="container">
           <div className="row">
-            <form className='searchForm col-lg-8' onSubmit={this.handleFormSubmit}>
+            <form
+              className="searchForm col-lg-8"
+              onSubmit={this.handleFormSubmit}
+            >
               <div class="cursor">
                 <input
-                  id='gameNameInput'
-                  className='form-control'
+                  id="gameNameInput"
+                  className="form-control"
                   value={this.state.gameName}
-                  name='gameName'
+                  name="gameName"
                   onChange={this.handleInputChange}
-                  type='text'
+                  type="text"
                   placeholder="ex. Halo, NBA 2K18"
                 />
-                <i class="fas text-black"></i>    
+                <i class="fas text-black" />
               </div>
-              <button type='submit'><i class="fas fa-search"></i></button>            
+              <button type="submit" className="button">
+                <i class="fas fa-search" />
+              </button>
             </form>
           </div>
         </div>
       </Jumbotron>
-    )
+    );
   }
-};
+}
 
 function mapStateToProps(state) {
   return {
-    games: state.games,
+    games: state.games
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    gameActions: bindActionCreators(gameActionCreators, dispatch),
+    gameActions: bindActionCreators(gameActionCreators, dispatch)
   };
 }
 

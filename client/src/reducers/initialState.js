@@ -1,8 +1,8 @@
 export default {
   games: {
-    currentGame: {},    
+    currentGame: {},
     data: [],
-    error: false,
+    error: false
   },
-  user: {},
+  user: {}
 };

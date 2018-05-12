@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as userActionCreators from '../../actions/userActions.js';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as userActionCreators from "../../actions/userActions.js";
 
 import { auth } from "../../firebase";
-import './modalstyle.css';
-
+import "./modalstyle.css";
 
 const INITIAL_STATE = {
   username: "",
@@ -36,21 +35,21 @@ class SignUpForm extends Component {
 
     auth
       .doCreateUserWithEmailAndPassword(email, password1)
-      .then(async (authUser) => {
+      .then(async authUser => {
         try {
-          console.log(authUser);
-          const user = await API.saveNewUser({email: authUser.email, fireBaseId: authUser.uid, userName: username});
-          console.log(user);
+          const user = await API.saveNewUser({
+            email: authUser.email,
+            fireBaseId: authUser.uid,
+            userName: username
+          });
           this.props.userActions.retrieveUser(authUser.uid);
-          console.log(this.props.user);
-        } catch(err) {
-          console.log(err);
+        } catch (err) {
+          throw err;
         }
-        history.push('/myprofile');
+        history.push("/search");
       })
       .catch(error => {
-        console.log(error);
-        // this.setState(byPropKey("error", error));
+        throw error;
       });
 
     event.preventDefault();
@@ -66,71 +65,64 @@ class SignUpForm extends Component {
       username === "";
 
     return (
-
       <form onSubmit={this.onSubmit}>
-      <div className="container">
-      <div className="row">
-        <input
-          value={username}
-          onChange={event =>
-            this.setState(byPropKey("username", event.target.value))
-          }
-          type="text"
-          placeholder="Your name"
-        />
-        <input
-          value={email}
-          onChange={event =>
-            this.setState(byPropKey("email", event.target.value))
-          }
-          type="email"
-          placeholder="Your email address"
-        />
-        <input
-          value={password1}
-          onChange={event =>
-            this.setState(byPropKey("password1", event.target.value))
-          }
-          type="password"
-          placeholder="Make a password"
-        />
-        <input
-          value={password2}
-          onChange={event =>
-            this.setState(byPropKey("password2", event.target.value))
-          }
-          type="password"
-          placeholder="Confirm your password"
-        />
-        <button type="submit" className="submit" disabled={isInvalid}>
-          create account
-        </button>
+        <div className="container">
+          <div className="row">
+            <input
+              value={username}
+              onChange={event =>
+                this.setState(byPropKey("username", event.target.value))
+              }
+              type="text"
+              placeholder="Your name"
+            />
+            <input
+              value={email}
+              onChange={event =>
+                this.setState(byPropKey("email", event.target.value))
+              }
+              type="email"
+              placeholder="Your email address"
+            />
+            <input
+              value={password1}
+              onChange={event =>
+                this.setState(byPropKey("password1", event.target.value))
+              }
+              type="password"
+              placeholder="Make a password"
+            />
+            <input
+              value={password2}
+              onChange={event =>
+                this.setState(byPropKey("password2", event.target.value))
+              }
+              type="password"
+              placeholder="Confirm your password"
+            />
+            <button type="submit" className="submit" disabled={isInvalid}>
+              create account
+            </button>
 
-        {error && <span>{error.message}</span>}
-        </div>
+            {error && <span>{error.message}</span>}
+          </div>
         </div>
       </form>
-
     );
   }
 }
 
-
-
-
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    user: state.user
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    userActions: bindActionCreators(userActionCreators, dispatch),
+    userActions: bindActionCreators(userActionCreators, dispatch)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUpForm));
-
-// export default withRouter(SignUpPage);
-
-// export { SignUpForm, SignUpLink };
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withRouter(SignUpForm)
+);

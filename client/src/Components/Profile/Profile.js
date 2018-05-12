@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { Link, withRouter } from 'react-router-dom';
 import Feed from '../Feed';
-// import UpdateProfile from "./UpdateProfile"
-// import UpdateProfile from "../MyProfile/UpdateProfile";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActionCreators from '../../actions/userActions.js';
 
-// import UpdateProfileButton from '../MyProfile/UpdateProfileButton';
 import UpdateProfileModal from "../MyProfile/UpdateProfileModal";
 import API from '../../utils/API.js';
 import Follow from './FollowButton';
@@ -51,7 +48,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.state);
     if (!this.state) {
       return null
     } else if(!this.state.user){
@@ -95,7 +91,7 @@ class Profile extends Component {
                   </div>
                   <div className="col-md-8">
                     <div>about me:</div>
-                    <p>{this.state.user.bio}test</p>
+                    <p>{this.state.user.bio}</p>
                     <div>I play on:</div>
                     <div>{this.state.user.platforms}</div>
                   </div>

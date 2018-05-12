@@ -75,7 +75,7 @@ class NavigationNoAuth extends React.Component {
       <Navbar className="navbar navbar-dark">
 
         <span className="navbar-brand float-left">
-          <Link to="/myfeed">lfg-app</Link>
+          {this.props.authUser ? <Link to="/myfeed">lfg-app</Link> : <Link to="/search">lfg-app</Link>}
         </span>
 
         <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0 pull-left">

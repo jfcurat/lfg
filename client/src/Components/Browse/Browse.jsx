@@ -21,6 +21,7 @@ class Browse extends Component {
 function mapStateToProps(state) {
   return {
     games: state.games, 
+    user: state.user
   };
 }
 function mapDispatchToProps(dispatch) {

@@ -5,6 +5,7 @@ import moment from 'moment';
 class Feed extends Component {
   formatPostsArray() {
     const { postArrays } = this.props;
+    console.log(postArrays);
     const posts = [].concat.apply([], postArrays);
     const sortedPosts = posts.sort((postA, postB) => {
       return moment(postA.timeCreated).diff(moment(postB.timeCreated))

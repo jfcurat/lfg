@@ -13,6 +13,7 @@
   text-align: center;
   line-height: 75px;
   font-size: 30px;
+  
 }
 
 img {
@@ -24,7 +25,12 @@ img {
 }
 
 button {
-  margin-left: 5%,
+  margin-left: 5%;
+  float: right;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  
 }
 
 .modal-img {
@@ -38,8 +44,31 @@ ul > li {
   font-size: 22px;
   list-style-type: none;
   margin-top: -30px;
+  font-family: 'Quantico', sans-serif;
+
 }
+
+p {
+  font-family: 'Quantico', sans-serif;
+}
+
 .modal-content {
   background-color: rgba(34, 34, 34, 0.8);
   border-radius: 10px;
+  padding: 20px; 
+}
+
+.col {
+  /* border: 10px solid #343A40; */
+  font-family: 'Quantico', sans-serif;
+  background-color: black;
+  border-right: 3px solid #343A40;
+  border-left: 3px solid #343A40;
+  border-top: 13px solid #343A40;
+  border-bottom: 13px solid #343A40;
+}
+
+a {
+  font-family: 'Quantico', sans-serif;
+
 }

@@ -21,6 +21,17 @@ async function get(req, res) {
         path: 'gameId',
         model: 'Game',
       }
+    }).populate({
+      path: 'followers',
+      model: 'User',
+      populate: {
+        path: 'posts',
+        model: 'Post',
+        populate: {
+          path: 'gameId',
+          model: 'Game',
+        }
+      }
     });
     res.status(200).json(user);
   } catch(err) {
@@ -48,6 +59,17 @@ async function getSignIn(req, res) {
       populate: {
         path: 'gameId',
         model: 'Game',
+      }
+    }).populate({
+      path: 'followers',
+      model: 'User',
+      populate: {
+        path: 'posts',
+        model: 'Post',
+        populate: {
+          path: 'gameId',
+          model: 'Game',
+        }
       }
     });
     res.status(200).json(user);

@@ -4,6 +4,7 @@ import './Games.css';
 import GameImage from './GameImage';
 import AddGameButton from './AddGameButton';
 import PostModal from '../PostModal';
+import SignInModal from '../../AuthPages/SignInModal';
 
 class Games extends Component {
   render() {
@@ -21,8 +22,8 @@ class Games extends Component {
                   <div key={index}>
                     <GameImage src={game.coverPhoto} gameId={game._id ? game._id : false}/>
                     <GameInfoModal gameInfo={game}/>
-                    <AddGameButton game={game} new={this.props.games.new}/>
-                    <PostModal games={game}/>
+                    {this.props.games.new ? <AddGameButton game={game} new={this.props.games.new} /> : null }
+                    {this.props.games.new ? null : <PostModal games={game}/>}
                   </div>
                 )
               })}

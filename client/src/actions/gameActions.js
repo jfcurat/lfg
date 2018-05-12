@@ -44,6 +44,7 @@ export const retrieveGames = gameName => {
     try {
       console.log(gameName);
       const games = await API.searchGames(gameName);
+      console.log(games);
       dispatch(getGamesSuccess(games));
     } catch(err) {
       console.log(err);

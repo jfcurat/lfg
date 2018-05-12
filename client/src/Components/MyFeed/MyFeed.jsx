@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 
-import feed from "../Feed";
+import Feed from "../Feed";
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as userActionCreators from '../../actions/userActions.js';
+import { Jumbotron, Container } from 'reactstrap';
 
 class MyFeed extends Component {
     state = {
@@ -13,30 +14,47 @@ class MyFeed extends Component {
         post: '',
         userName: ''
     };
-
     render() {
-        const postArrays = this.props.user.following.map(followingUser => {
-            return followingUser.posts.map(post => {
-                return {
-                    post: post.post,
-                    amountOfPlayersNeeded: post.amountOfPlayersNeeded,
-                    userId: followingUser._id,
-                    userName: followingUser.userName,
-                    timeCreated: post.timeCreated,
-                    platform: post.platform,
-                    gameId: post.gameId,
-                    game: post.game.name,
-                }
-            })
+        let posts = true;
+        console.log(this.props);      
+        const postArrays = this.props.user.user.following.map(followingUser => {
+            if(followingUser.posts) {
+                return followingUser.posts.map(post => {
+                    return {
+                        post: post.post,
+                        amountOfPlayersNeeded: post.amountOfPlayersNeeded,
+                        userId: followingUser._id,
+                        userName: followingUser.userName,
+                        timeCreated: post.timeCreated,
+                        platform: post.platform,
+                        gameId: post.gameId,
+                        game: post.gameId.name,
+                    }
+                })
+            } else {
+                return posts = false;
+            }
         })
-
+        console.log(postArrays);
         return (
-            <div className="card bg-light" style={{ marginTop: 15, marginBottom: 15, backgroundColor: "gray" }}>
-                <div className="card-header text-center">
-                    <h1>My Feed</h1>
+        <div>
+            <Jumbotron fluid>
+                <div className="container">
+                    <h1 className="display-2">My Feed</h1>
                 </div>
-                <Feed postArrays={postArrays} />
+            </Jumbotron>
+
+            <div class="container">
+            <div class="row">
+            <div class="col-lg-10">
+
+            {posts ? <Feed postArrays={postArrays} /> : <p>There are no posts yet</p>}
+
             </div>
+            </div>
+            </div>
+
+        </div>
         )
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./UpdateProfile.css";
 import Checkbox from './Checkbox';
 import API from '../../utils/API.js';
+import '../AuthPages/modalstyle.css';
 
 
 const platformOptions = [
@@ -77,6 +78,7 @@ class UpdateProfileForm extends Component {
     return (
       <div>
         <form className="form">
+        <div className="form-group">
           <span>Username:</span>
           <input
             value={this.state.username ? this.state.username : this.props.user.userName}
@@ -84,8 +86,13 @@ class UpdateProfileForm extends Component {
             onChange={this.handleInputChange}
             type='text'
           />
+        </div>
+        <div className="form-group">
           <span>Platforms:</span>
           {this.createCheckboxes()}
+          </div>
+
+        <div className="form-group">
           <span>Profile Photo</span>
           <input
             type='text'
@@ -93,7 +100,8 @@ class UpdateProfileForm extends Component {
             value={this.state.profilePhoto ? this.state.profilePhoto : this.props.user.profilePhoto}
             onChange={this.handleInputChange}
           />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+        </div>
+          <button className="submit" onClick={this.handleFormSubmit}>Submit</button>
         </form>
       </div>
     );

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { firebase } from "./firebase";
 
 import NoMatch from "./Components/NoMatch.jsx";
+import MyFeed from './Components/MyFeed/MyFeed';
 import GamePage from "./Components/GamePage/GamePage.jsx";
 import "./App.css";
 
@@ -32,6 +33,7 @@ class App extends Component {
         <div>
           <NavBar authUser={this.state.authUser} />
           <Switch>
+            <Route exact path="/myfeed" component={MyFeed} />            
             <Route exact path="/search" component={Browse} />
             <Route exact path="/myprofile" component={Profile} />
             <Route exact path="/user/:id" component={Profile} />

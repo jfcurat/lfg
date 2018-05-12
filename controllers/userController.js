@@ -10,11 +10,18 @@ async function get(req, res) {
         path: 'posts',
         model: 'Post',
         populate: {
-          path: 'game',
+          path: 'gameId',
           model: 'Game',
         }
       }
-    }).populate('posts');
+    }).populate({
+      path: 'posts',
+      model: 'Post',
+      populate: {
+        path: 'gameId',
+        model: 'Game',
+      }
+    });
     res.status(200).json(user);
   } catch(err) {
     console.log(err);
@@ -31,11 +38,18 @@ async function getSignIn(req, res) {
         path: 'posts',
         model: 'Post',
         populate: {
-          path: 'game',
+          path: 'gameId',
           model: 'Game',
         }
       }
-    }).populate('posts');
+    }).populate({
+      path: 'posts',
+      model: 'Post',
+      populate: {
+        path: 'gameId',
+        model: 'Game',
+      }
+    });
     res.status(200).json(user);
   } catch(err) {
     console.log(err);

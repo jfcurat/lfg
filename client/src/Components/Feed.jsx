@@ -16,26 +16,30 @@ class Feed extends Component {
     const posts = this.formatPostsArray();
     console.log(posts);
     return (
-      <div className='card bg-light' style={{ marginTop: 15, marginBottom: 15, backgroundColor: 'gray' }}>
-        <div className='card-body bg-light'>
+      <div className='card bg-dark' style={{ marginTop: 15, marginBottom: 15 }}>
+        <div className='card-body bg-dark'>
           <div>
             {posts.map(post =>
-              <div className='card bg-light' key={post.post} style={{ marginTop: 20 }} >
-                <div className='card-header'>
+              <div className='card bg-dark' key={post.post} style={{ marginTop: 20 }} >
+                <div className='card-header bg-dark'>
                   <div className='row'>
                     <div className='col-sm-9'>
-                      <Link to={`/users/${post.userId}`}>{post.userName}</Link>
+                      <Link to={`/user/${post.userId}`}>{post.userName}</Link>
                     </div>
                     <div className='col-sm-9'>
                       <Link to={`/game/${post.gameId}`}>{post.game}</Link>
                     </div>
                     <div className='col-sm-3'>
-                      <p>{post.post}</p>
+                      <p>Platform: </p>
+                      <p>{post.platform}</p>
                     </div>
-                    <span>{post}</span>
+                    <div className='col-sm-3'>
+                      <p>Players needed: </p>
+                      <p>{post.amountOfPlayersNeeded}</p>
+                    </div>
                   </div>
                 </div>
-                <div className='card-body bg-light'>
+                <div className='card-body bg-dark'>
                   <p>{post.post}</p>
                 </div>
               </div>

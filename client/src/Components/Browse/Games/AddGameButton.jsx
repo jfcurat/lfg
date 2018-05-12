@@ -15,7 +15,7 @@ class AddGameButton extends Component {
   render() {
     if(this.props.new) {
       return (
-        <button onClick={this.addGame} className='btn btn-primary'>Add Game</button>
+        <button onClick={this.addGame} className='btn btn-outline-light'>Add Game</button>
       )
     } else {
       return null;

@@ -14,7 +14,7 @@ class GameInfoModal extends React.Component {
   render() {
     return (
       <div>    
-      <button className='btn btn-primary' onClick={() => this.setState({showModal: true})}>More info!</button>
+      <button className='btn btn-outline-light' onClick={() => this.setState({showModal: true})}>More Info!</button>
       <Modal visible={this.state.showModal} dialogClassName='modal-lg' onClickBackdrop={this.modalBackdropClicked}>
         <div>
           <img src={this.props.gameInfo.coverPhoto} className='modal-img pull-right' alt=''></img>

@@ -55,9 +55,10 @@ class AddModal extends React.Component {
     console.log(this.props.games);
     if (this.props.userId) {
       return (
-        <div>
-        <button className='btn btn-primary' onClick={()=> this.setState({showModal: true})}>Create Post</button>
+    
         <div className="container">
+        <button className='btn btn-outline-light' onClick={()=> this.setState({showModal: true})}>Create Post</button>
+
           <div style={buttonStyle}>
             <Modal isOpen={this.state.showModal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
               <ModalHeader>{this.props.games.name}</ModalHeader>
@@ -88,7 +89,7 @@ class AddModal extends React.Component {
             </Modal>
           </div>
         </div>
-        </div>
+  
       );
     }
     return <ul className="navbar-nav ml-auto">

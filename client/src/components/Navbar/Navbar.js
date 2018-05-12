@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Modal, ModalBody, ModalFooter}from "reactstrap";
+import {Modal, ModalBody}from "reactstrap";
 import SignUpForm from "../AuthPages/SignUp";
 
 import {
@@ -26,10 +26,10 @@ const NavigationAuth = () => (
 
 
 
-    <a className="navbar-brand float-left" href="/">
+    <span className="navbar-brand float-left">
       <Link to="/myfeed">lfg-app</Link>
 
-    </a>
+    </span>
 
     <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0 pull-left">
 
@@ -74,10 +74,10 @@ class NavigationNoAuth extends React.Component {
     return(
       <Navbar className="navbar navbar-dark">
 
-    <a className="navbar-brand float-left" href="/">
+    <span className="navbar-brand float-left">
       <Link to="/myfeed">lfg-app</Link>
 
-    </a>
+    </span>
 
       <ul className="nav nav-pills nav-fill mr-auto mt-2 mt-lg-0 pull-left">
         <li className="nav-item">

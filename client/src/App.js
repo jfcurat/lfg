@@ -35,7 +35,7 @@ class App extends Component {
           <NavBar authUser={this.state.authUser} />
           <Wrapper>
           <Switch>
-            <Route exact path="/" component={Profile} />          
+            <Route exact path="/" component={Browse} />          
             <Route exact path="/myfeed" component={MyFeed} />
             <Route exact path="/search" component={Browse} />
             <Route exact path="/myprofile" component={Profile} />

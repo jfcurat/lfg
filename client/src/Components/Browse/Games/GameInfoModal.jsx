@@ -28,6 +28,7 @@ class GameInfoModal extends React.Component {
           <div className="gameInfo">
             <img
               src={this.props.gameInfo.coverPhoto}
+              style={{ height: 'auto' }}
               className="modal-img pull-right"
               alt=""
             />

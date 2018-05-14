@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./UpdateProfile.css";
-import Checkbox from './Checkbox';
-import API from '../../utils/API.js';
-
+import Checkbox from "./Checkbox";
+import API from "../../utils/API.js";
+import "../AuthPages/modalstyle.css";
 
 const platformOptions = [
   "PC (Microsoft Windows)",
@@ -15,6 +15,7 @@ const platformOptions = [
 class UpdateProfileForm extends Component {
   // Setting the component's initial state
   state = {
+<<<<<<< HEAD
     username: '',
     platform: [],
   };
@@ -31,14 +32,29 @@ class UpdateProfileForm extends Component {
     this.setState({
       // [name]: value
       username: value
+=======
+    username: this.props.user.userName,
+    profilePhoto: this.props.user.profilePhoto,
+    platforms: []
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+>>>>>>> master
     });
   };
 
   componentWillMount = () => {
     this.selectedCheckboxes = new Set();
+<<<<<<< HEAD
     // this.selectedCheckboxes = [];
 
   }
+=======
+  };
+>>>>>>> master
 
   toggleCheckbox = label => {
     if (this.selectedCheckboxes.has(label)) {
@@ -46,11 +62,16 @@ class UpdateProfileForm extends Component {
     } else {
       this.selectedCheckboxes.add(label);
     }
+<<<<<<< HEAD
     // this.setState({platform:[...this.state.platform, this.selectedCheckboxes]});
     this.setState({platform:[...this.selectedCheckboxes]});
     console.log(this.selectedCheckboxes);
     console.log(this.state);
   }
+=======
+    this.setState({ platforms: [...this.selectedCheckboxes] });
+  };
+>>>>>>> master
 
   createCheckbox = label => (
     <Checkbox
@@ -58,12 +79,11 @@ class UpdateProfileForm extends Component {
       handleCheckboxChange={this.toggleCheckbox}
       key={label}
     />
-  )
+  );
 
-  createCheckboxes = () => (
-    platformOptions.map(this.createCheckbox)
-  )
+  createCheckboxes = () => platformOptions.map(this.createCheckbox);
 
+<<<<<<< HEAD
   handleFormSubmit = event => {
     event.preventDefault();
     if (!this.state.username) {
@@ -87,6 +107,21 @@ class UpdateProfileForm extends Component {
     this.setState({
       username: "",
       platform: [],
+=======
+  handleFormSubmit = async event => {
+    event.preventDefault();
+    await API.updateUserInfo(
+      this.props.user.fireBaseId,
+      this.state.platforms,
+      this.state.username,
+      this.state.profilePhoto
+    );
+
+    this.setState({
+      username: "",
+      profilePhoto: "",
+      platform: []
+>>>>>>> master
     });
     console.log (this.state)
 
@@ -98,6 +133,7 @@ class UpdateProfileForm extends Component {
     return (
       <div>
         <form className="form">
+<<<<<<< HEAD
           <span>Username:</span>
           <input
             value='nothing'
@@ -109,6 +145,42 @@ class UpdateProfileForm extends Component {
           <span>Platforms:</span>
           {this.createCheckboxes()}
           <button onClick={this.handleFormSubmit}>Submit</button>
+=======
+          <div className="form-group">
+            <span>Username:</span>
+            <input
+              value={
+                this.state.username
+                  ? this.state.username
+                  : this.props.user.userName
+              }
+              name="username"
+              onChange={this.handleInputChange}
+              type="text"
+            />
+          </div>
+          <div className="form-group">
+            <span>Platforms:</span>
+            {this.createCheckboxes()}
+          </div>
+
+          <div className="form-group">
+            <span>Profile Photo</span>
+            <input
+              type="text"
+              name="profilePhoto"
+              value={
+                this.state.profilePhoto
+                  ? this.state.profilePhoto
+                  : this.props.user.profilePhoto
+              }
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <button className="submit" onClick={this.handleFormSubmit}>
+            Submit
+          </button>
+>>>>>>> master
         </form>
       </div>
     );

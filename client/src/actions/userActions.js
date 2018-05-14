@@ -17,12 +17,10 @@ export const getUserFailure = () => {
 export const retrieveUser = fireBaseId => {
   return async function(dispatch) {
     try {
-      console.log(fireBaseId);
       const user = await API.signInUser(fireBaseId);
-      console.log(user);
       dispatch(getUserSuccess(user.data));
     } catch(err) {
-      console.log(err);
+      throw err;
       dispatch(getUserFailure());
     }
   };

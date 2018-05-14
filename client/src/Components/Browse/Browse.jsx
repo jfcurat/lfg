@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import Search from './Search.jsx';
-import Games from './Games/Games.jsx';
+import React, { Component } from "react";
+import Search from "./Search.jsx";
+import Games from "./Games/Games.jsx";
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as gameActionCreators from '../../actions/gameActions.js';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as gameActionCreators from "../../actions/gameActions.js";
 
 class Browse extends Component {
   render() {
@@ -12,20 +12,21 @@ class Browse extends Component {
     return (
       <div>
         <Search />
-        <Games games={data}/>
+        <Games games={data} />
       </div>
-    )  
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    games: state.games, 
+    games: state.games,
+    user: state.user
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    gameActions: bindActionCreators(gameActionCreators, dispatch),
+    gameActions: bindActionCreators(gameActionCreators, dispatch)
   };
 }
 

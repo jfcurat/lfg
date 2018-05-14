@@ -5,11 +5,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { firebase } from "./firebase";
 
 import NoMatch from "./Components/NoMatch.jsx";
+<<<<<<< HEAD
+=======
+import MyFeed from "./Components/MyFeed/MyFeed";
+>>>>>>> master
 import GamePage from "./Components/GamePage/GamePage.jsx";
-import "./App.css";
 
 import Profile from "./Components/Profile/Profile";
 import NavBar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+import Wrapper from './Components/Wrapper/Wrapper';
 
 class App extends Component {
   constructor(props) {
@@ -31,15 +36,22 @@ class App extends Component {
       <Router>
         <div>
           <NavBar authUser={this.state.authUser} />
+          <Wrapper>
           <Switch>
+<<<<<<< HEAD
+=======
+            <Route exact path="/" component={Browse} />          
+            <Route exact path="/myfeed" component={MyFeed} />
+>>>>>>> master
             <Route exact path="/search" component={Browse} />
             <Route exact path="/myprofile" component={Profile} />
             <Route exact path="/user/:id" component={Profile} />
             <Route exact path="/game/:id" component={GamePage} />
             <Route component={NoMatch} />
           </Switch>
+          </Wrapper>
+          <Footer />
         </div>
-
       </Router>
     );
   }

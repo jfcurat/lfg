@@ -1,54 +1,45 @@
-/* div.modal-content {
-    background-color: rgba(0,0,0,0.8);
-    font-weight: lighter;
-} */
-
 * {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
 
 .modal-content form {
-    font-weight: lighter;
-
+  font-weight: lighter;
 }
-
 
 .modal-content input {
-    border-radius: 5px;
-    margin: 10px;
-    width: 100%;
-    height: 40px;
-    padding: 10px;
-    border: none;
-    background-color: (255, 255, 255, 0.9);
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: (255, 255, 255, 0.9);
 }
 .submit {
-    width: 100%;
-    background-color: #79e;
-    border-radius: 5px;
-    font-size: 14px;
-    height:40px;
-    margin: 10px;
-    padding: 10px;
-    border: none;
+  width: 100%;
+  background-color: #79e;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 40px;
+  margin: 10px;
+  padding: 10px;
+  border: none;
 }
 
 .modal-form {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 label {
-    font-size: 12px;
+  font-size: 12px;
 }
 
-.modal-content{
-    background-color: rgba(34, 34, 34, 0.95);
-    border-radius: 10px;
-   
+.modal-content {
+  background-color: rgba(34, 34, 34, 0.95);
+  border-radius: 10px;
 }
 
-
-.modal-header, .modal-footer {
-    border: none;
+.modal-header,
+.modal-footer {
+  border: none;
 }

@@ -19,7 +19,13 @@ app.use(express.static('./client/build'));
 
 app.use(gameRouter, userRouter, postRouter);
 
-mongoose.connect(process.env.MONGODB_URI  || 'mongodb://localhost/lfgdb');
+mongoose.Promise = Promise;
+
+mongoose.connect(process.env.MONGODB_URI  || 'mongodb://<dbuser>:<dbpassword>@ds139138.mlab.com:39138/heroku_9rhg8l0p');
+
+// mongoose.connect(MONGODB_URI, {
+//   useMongoClient: true
+// });
 
 app.listen(PORT, function() {
   console.log('App listening on PORT ' + PORT);

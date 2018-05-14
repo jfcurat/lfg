@@ -1,5 +1,5 @@
-import actionTypes from '../actions/actionTypes';
-import initialState from './initialState';
+import actionTypes from "../actions/actionTypes";
+import initialState from "./initialState";
 
 export default function userReducer(state = initialState.user, action) {
   switch (action.type) {
@@ -7,17 +7,17 @@ export default function userReducer(state = initialState.user, action) {
       return {
         ...state,
         user: action.data,
-        error: false,
-      }
+        error: false
+      };
     }
     case actionTypes.GET_USER_FAILURE: {
       return {
         ...state,
-        error: true,
+        error: true
       };
     }
     default: {
       return state;
     }
   }
-};
+}

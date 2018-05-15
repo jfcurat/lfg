@@ -18,6 +18,7 @@
 .submit {
   width: 100%;
   background-color: #79e;
+  color: #fff; 
   border-radius: 5px;
   font-size: 14px;
   height: 40px;

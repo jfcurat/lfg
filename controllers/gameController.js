@@ -101,7 +101,7 @@ async function post(req, res) {
     });
     res.status(200).json(game);
   } catch (err) {
-    throw err;
+    console.log(err);
   }
 }
 

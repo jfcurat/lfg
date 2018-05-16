@@ -14,6 +14,13 @@ class MyFeed extends Component {
     post: "",
     userName: ""
   };
+
+  refreshFeed = async () => {
+    return this.props.userActions.retrieveUser(
+      this.props.user.user.fireBaseId
+    );
+  };
+
   render() {
     let posts = true;
     const postArrays = this.props.user.user.following.map(followingUser => {
@@ -34,6 +41,7 @@ class MyFeed extends Component {
         return (posts = false);
       }
     });
+
     return (
       <div>
         <Jumbotron fluid>
@@ -46,7 +54,7 @@ class MyFeed extends Component {
           <div class="row">
             <div class="col-lg-10">
               {posts ? (
-                <Feed postArrays={postArrays} />
+                <Feed refresh={this.refreshFeed} postArrays={postArrays} />
               ) : (
                 <p>There are no posts yet</p>
               )}

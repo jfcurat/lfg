@@ -13,6 +13,12 @@ import NavBar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import Wrapper from './Components/Wrapper/Wrapper';
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import * as userActionCreators from "./actions/userActions.js";
+import { Jumbotron, Container } from "reactstrap";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +28,14 @@ class App extends Component {
 
   componentDidMount() {
     firebase.auth.onAuthStateChanged(authUser => {
-      authUser
-        ? this.setState(() => ({ authUser }))
-        : this.setState(() => ({ authUser: null }));
+      if(authUser) {
+        this.setState(() => ({ authUser }))
+        this.props.userActions.retrieveUser(authUser.uid);
+      } else {
+        this.setState(() => ({ authUser: null }));
+      }
     });
+    this.state;
   }
 
   render() {
@@ -51,4 +61,15 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActionCreators, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

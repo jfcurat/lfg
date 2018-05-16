@@ -20,7 +20,7 @@ export const retrieveUser = fireBaseId => {
       const user = await API.signInUser(fireBaseId);
       dispatch(getUserSuccess(user.data));
     } catch(err) {
-      throw err;
+      console.log(err);
       dispatch(getUserFailure());
     }
   };

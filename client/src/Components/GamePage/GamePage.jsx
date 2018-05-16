@@ -12,6 +12,10 @@ class GamePage extends Component {
   state = {};
 
   componentDidMount = async () => {
+    this.refreshFeed();
+  };
+
+  refreshFeed = async () => {
     const {
       match: { params }
     } = this.props;
@@ -52,7 +56,7 @@ class GamePage extends Component {
           <hr className="my-4" />
           <PostModal games={this.state.game} />
         </div>
-        <Feed postArrays={postArrays} />
+        <Feed refresh={this.refreshFeed} postArrays={postArrays} />
       </div>
     );
   }

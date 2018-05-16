@@ -44,7 +44,11 @@ class Profile extends Component {
 
   getUser = async (id) => {
     const user = await API.getUser(id);
-    this.setState({user});
+    this.setState({user});    
+  }
+
+  refreshFeed = async () => {
+    return this.props.userActions.retrieveUser(this.props.user.user.fireBaseId);
   }
 
   render() {
@@ -134,7 +138,7 @@ class Profile extends Component {
             <div className="row">
               <h1 className="display-5">posts</h1>
               <div class="container">
-                <Feed postArrays={posts} />
+                <Feed refresh={this.refreshFeed} postArrays={posts} />
               </div>
             </div>
           </div>

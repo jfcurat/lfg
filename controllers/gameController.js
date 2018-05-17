@@ -1,6 +1,6 @@
 const db = require("../models");
 const igdb = require("igdb-api-node").default;
-const client = igdb("9a947a305a14a01cbe00b6e3e679f06e");
+const client = igdb("e370ba80ebf9c11e15c88c087caac481");
 
 async function get(req, res) {
   try {
